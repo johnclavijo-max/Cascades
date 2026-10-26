@@ -1,12 +1,13 @@
 """In-session action tracker tool.
 
-Maintains a per-session dictionary of recommended actions from the response
+Maintains a per-thread dictionary of recommended actions from the response
 brief. Supports create, update, list, and status-check operations.
 Ownership is NEVER inferred — the user must always confirm the owner.
 No external API calls are made.
 """
 import json
 import logging
+from contextvars import ContextVar, Token
 from datetime import datetime, timezone
 from typing import Literal, Optional
 
@@ -15,9 +16,33 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
-# Module-level store — shared within a single process/session.
-# In production, this is scoped per conversation thread.
-_action_store: dict[str, dict] = {}
+# The AgentExecutor builds this tool once and shares it across every request in
+# the process, so the store MUST be partitioned per conversation thread or one
+# user's actions leak into (and overwrite) another's — action IDs like "P1" are
+# regenerated identically for every response brief. The active thread key is
+# published by the agent (see agent.set_action_thread) before each graph run and
+# read here via a ContextVar, which langchain_core copies into the executor
+# thread that runs this sync tool. Unset (e.g. direct unit tests) → shared
+# "default" bucket.
+_thread_context: ContextVar[str] = ContextVar("action_tracker_thread", default="default")
+
+# thread_key -> (action_id -> action record)
+_action_store: dict[str, dict[str, dict]] = {}
+
+
+def set_action_thread(thread_id: str) -> Token:
+    """Bind the current context to a conversation thread's action bucket."""
+    return _thread_context.set(thread_id)
+
+
+def reset_action_thread(token: Token) -> None:
+    """Restore the thread binding to its previous value."""
+    _thread_context.reset(token)
+
+
+def _current_bucket() -> dict[str, dict]:
+    """Return the action store for the current thread, creating it if needed."""
+    return _action_store.setdefault(_thread_context.get(), {})
 
 
 class ActionTrackerInput(BaseModel):
@@ -76,13 +101,14 @@ def _action_tracker(
 ) -> str:
     """Perform action tracking operations."""
     now = datetime.now(tz=timezone.utc).isoformat()
+    store = _current_bucket()
 
     if operation == "create":
         if not all([action_id, action_type, description, responsible_team]):
             return json.dumps({
                 "error": "create requires action_id, action_type, description, and responsible_team"
             })
-        _action_store[action_id] = {  # type: ignore[index]
+        store[action_id] = {  # type: ignore[index]
             "action_id": action_id,
             "action_type": action_type,
             "description": description,
@@ -94,29 +120,29 @@ def _action_tracker(
             "last_updated": now,
         }
         logger.info("[M4] Action created: %s (%s)", action_id, responsible_team)
-        return json.dumps({"success": True, "action": _action_store[action_id]})
+        return json.dumps({"success": True, "action": store[action_id]})
 
     elif operation == "update":
         if not action_id:
             return json.dumps({"error": "update requires action_id"})
-        if action_id not in _action_store:
+        if action_id not in store:
             return json.dumps({"error": f"Action {action_id} not found"})
         if assigned_owner:
-            _action_store[action_id]["assigned_owner"] = assigned_owner
+            store[action_id]["assigned_owner"] = assigned_owner
         if status:
-            _action_store[action_id]["status"] = status
-        _action_store[action_id]["last_updated"] = now
-        assigned = sum(1 for a in _action_store.values() if a.get("assigned_owner") != "unassigned")
-        pending = sum(1 for a in _action_store.values() if a.get("status") == "pending")
+            store[action_id]["status"] = status
+        store[action_id]["last_updated"] = now
+        assigned = sum(1 for a in store.values() if a.get("assigned_owner") != "unassigned")
+        pending = sum(1 for a in store.values() if a.get("status") == "pending")
         if assigned > 0:
             logger.info(
                 "[M4] Action coordination active: %d actions assigned, %d pending",
                 assigned, pending,
             )
-        return json.dumps({"success": True, "action": _action_store[action_id]})
+        return json.dumps({"success": True, "action": store[action_id]})
 
     elif operation == "list":
-        actions = list(_action_store.values())
+        actions = list(store.values())
         summary = {
             "total": len(actions),
             "by_status": {
@@ -132,9 +158,9 @@ def _action_tracker(
     elif operation == "status_check":
         if not action_id:
             return json.dumps({"error": "status_check requires action_id"})
-        if action_id not in _action_store:
+        if action_id not in store:
             return json.dumps({"error": f"Action {action_id} not found"})
-        return json.dumps(_action_store[action_id], indent=2)
+        return json.dumps(store[action_id], indent=2)
 
     return json.dumps({"error": f"Unknown operation: {operation}"})
 

@@ -17,6 +17,7 @@ from langgraph.graph.state import CompiledStateGraph
 from sap_cloud_sdk.agent_decorators import agent_config, agent_model, prompt_section
 from sap_cloud_sdk.agent_memory.factory.langgraph_checkpoint import create_checkpointer
 from mcp_providers.agw import get_user_sub
+from tools.action_tracker import set_action_thread, reset_action_thread
 
 logger = logging.getLogger(__name__)
 _tracer = trace.get_tracer(__name__)
@@ -181,11 +182,18 @@ class SampleAgent:
         context_id: str,
         extra_messages: list | None = None,
     ) -> dict[str, Any]:
-        config = {"configurable": {"thread_id": f"{get_user_sub()}:{context_id}"}}
+        thread_id = f"{get_user_sub()}:{context_id}"
+        config = {"configurable": {"thread_id": thread_id}}
         messages = {"messages": (extra_messages or []) + [HumanMessage(content=query)]}
         graph = self._create_graph(self.llm, tools, system_prompt)
-        with _tracer.start_as_current_span("trade-disruption-agent.invoke"):
-            result = await graph.ainvoke(messages, cast(RunnableConfig, config))
+        # Bind the per-thread action-tracker bucket for the duration of this run so
+        # the tool's store stays isolated between concurrent users/conversations.
+        action_thread_token = set_action_thread(thread_id)
+        try:
+            with _tracer.start_as_current_span("trade-disruption-agent.invoke"):
+                result = await graph.ainvoke(messages, cast(RunnableConfig, config))
+        finally:
+            reset_action_thread(action_thread_token)
         self._emit_milestone_logs(result)
         return result
 
