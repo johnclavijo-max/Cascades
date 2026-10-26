@@ -1,0 +1,31 @@
+id: 07_Correctness_LeadershipSummary
+description: >
+  Happy path for UJ-05 — executive requests a post-event leadership summary. Agent produces
+  a structured executive brief covering total exposure, actions taken, and available outcomes
+  (M5 achieved).
+tags:
+  - correctness
+  - leadership_summary
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a senior executive who needs to present a board-level update on the tariff
+        disruption response for Southeast Asia electronics components.
+        The disruption response cycle has been running for 3 days.
+        You want the agent to produce a concise executive summary covering total margin exposure,
+        actions taken, and outcomes achieved so far.
+        Known information: disruption was a 15% tariff on electronics from Southeast Asia;
+        the response has been underway for 3 days.
+        Unknown information: exact totals and action counts — the agent must retrieve and
+        summarise these.
+        If the agent asks what level of detail you want, say you want a one-page executive
+        brief suitable for board presentation.
+        After receiving the summary, ask which decisions still need to be made at the leadership level.
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The response contains a structured executive brief with at minimum three sections: total exposure, actions taken, and remaining risks or open decisions.'
+      - check: 'When asked about outstanding decisions, the agent identifies specific open decisions requiring leadership input, grounded in the disruption response state described in this conversation.'
+      - check: 'The executive brief does not contain operational detail unsuitable for board-level review — it provides totals and decisions, not line-by-line order data.'
+    rule_compliance_validations:
+      - check: 'The agent does not state a total exposure figure or action count in the executive brief that it has not retrieved or calculated from tool data in this conversation.'

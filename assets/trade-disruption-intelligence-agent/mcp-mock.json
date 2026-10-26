@@ -1,0 +1,715 @@
+{
+  "servers": {
+    "sap-aribabuyer-procurement-reporting-details-v2": {
+      "mcp_server_name": "sap.mcp/operational_reporting_for_procurement_synchronous_api",
+      "description": "MCP server for the operational_reporting_for_procurement_synchronous_api service.",
+      "tools": {
+        "GetDetails": {
+          "description": "Synchronous API to get procurement transaction data, appropriate for smaller results sets",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "GetCount": {
+          "description": "synchronous API to get records count of procurement transaction data",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        }
+      }
+    },
+    "sap-aribas4-cost-breakdown-v1": {
+      "mcp_server_name": "sap.mcp/cost_breakdown_data_extraction_api",
+      "description": "MCP server for the cost_breakdown_data_extraction_api service.",
+      "tools": {
+        "extractCostGroupDataForExternalAppsUsingGET": {
+          "description": "Retrieve the cost components and the associated cost group terms by specifying the document ID",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "extractCostGroupMetaDataForExternalAppsUsingGET": {
+          "description": "Search for cost-group documents associated with line items for which awards or PIRs are created by specifying a date range.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        }
+      }
+    },
+    "sap-aribas4-pricing-v1": {
+      "mcp_server_name": "sap.mcp/pricing_api_for_product_sourcing_price_information",
+      "description": "MCP server for the pricing_api_for_product_sourcing_price_information service.",
+      "tools": {
+        "GetDetails": {
+          "description": "Get the pricing information from your realm either in JSON or XML format",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        }
+      }
+    },
+    "sap-aribas4-risk-engagement-v2": {
+      "mcp_server_name": "sap.mcp/supplier_risk_engagements_api",
+      "description": "MCP server for the supplier_risk_engagements_api service.",
+      "tools": {
+        "GET_engagements": {
+          "description": "This API will fetch paginated details of engagements based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of engagements. API accepts query param  $skip to get the next page response.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "engagementId": "ENG-0001",
+            "supplierId": "VENDOR-1001",
+            "status": "IN_PROGRESS",
+            "title": "Supply Continuity Review",
+            "ownerName": "Jane Smith"
+          }
+        },
+        "GET_engagements_workspaceId": {
+          "description": "This API will fetch all engagement project details for a given project ID.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "engagementId": "ENG-0001",
+            "supplierId": "VENDOR-1001",
+            "status": "IN_PROGRESS",
+            "title": "Supply Continuity Review",
+            "ownerName": "Jane Smith"
+          }
+        },
+        "GET_issues": {
+          "description": "This API will fetch paginated details of issues based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of issues. API accepts query param  $skip to get the next page response.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "GET_issues_workspaceId": {
+          "description": "This API will fetch all issue details for a given issue ID.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "GET_questionnaires": {
+          "description": "This API will fetch paginated details of questionnaires based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of Questionnaires. API accepts query param  $skip to get the next page response.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "GET_questionnaires_workspaceId": {
+          "description": "This API will fetch all questionnaire details for a given workspace ID.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        }
+      }
+    },
+    "sap-aribas4-risk-exposure-v3": {
+      "mcp_server_name": "sap.mcp/risk_exposure_api",
+      "description": "MCP server for the risk_exposure_api service.",
+      "tools": {
+        "GET_suppliers_smVendorId_exposures": {
+          "description": "This API fetches the overall and category risk exposure for the given smVendorId. The API accepts the query parameter realm to get the supplier details for the specified realm.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        },
+        "POST_suppliers_exposureRequest_pages_pageNo": {
+          "description": "This API fetches the overall and category risk exposure for the given list of smVendorIds or ERPVendorIDs. The API accepts the query parameter realm to get the supplier details for the specified realm.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "id": "mock-id-1",
+            "status": "active"
+          }
+        }
+      }
+    },
+    "sap-s4-api-supplier-activity-srv": {
+      "mcp_server_name": "sap.mcp/api_supplier_activity_srv",
+      "description": "MCP server for the api_supplier_activity_srv service.",
+      "tools": {
+        "get_metadata_api_supplier_activity_srv": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "batch_for_api_supplier_activity_srv": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "list_a_suplractysupplier_for_api_supplier_activity_srv": {
+          "description": "Retrieve a list of entities from the A_SuplrActySupplier collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SupplierActivityUUID": "guid-0001-abcd",
+                "SupplierActivityType": "CALL",
+                "Supplier": "VENDOR-1001",
+                "ActivityStatus": "OPEN",
+                "ActivityStartDate": "/Date(1740000000000)/"
+              },
+              {
+                "SupplierActivityUUID": "guid-0002-abcd",
+                "SupplierActivityType": "CALL",
+                "Supplier": "VENDOR-1002",
+                "ActivityStatus": "OPEN",
+                "ActivityStartDate": "/Date(1740000000000)/"
+              }
+            ]
+          }
+        },
+        "get_a_suplractysupplier_for_api_supplier_activity_srv": {
+          "description": "Retrieve a single entity by its key from the A_SuplrActySupplier collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SupplierActivityUUID": "guid-0001-abcd",
+            "SupplierActivityType": "CALL",
+            "Supplier": "VENDOR-1001",
+            "ActivityStatus": "OPEN",
+            "ActivityStartDate": "/Date(1740000000000)/"
+          }
+        },
+        "list_a_supplieractivity_for_api_supplier_activity_srv": {
+          "description": "Retrieve a list of entities from the A_SupplierActivity collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "SupplierActivityUUID": "guid-0001-abcd",
+                "SupplierActivityType": "CALL",
+                "Supplier": "VENDOR-1001",
+                "ActivityStatus": "OPEN",
+                "ActivityStartDate": "/Date(1740000000000)/"
+              },
+              {
+                "SupplierActivityUUID": "guid-0002-abcd",
+                "SupplierActivityType": "CALL",
+                "Supplier": "VENDOR-1002",
+                "ActivityStatus": "OPEN",
+                "ActivityStartDate": "/Date(1740000000000)/"
+              }
+            ]
+          }
+        },
+        "get_a_supplieractivity_for_api_supplier_activity_srv": {
+          "description": "Retrieve a single entity by its key from the A_SupplierActivity collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "SupplierActivityUUID": "guid-0001-abcd",
+            "SupplierActivityType": "CALL",
+            "Supplier": "VENDOR-1001",
+            "ActivityStatus": "OPEN",
+            "ActivityStartDate": "/Date(1740000000000)/"
+          }
+        },
+        "count_a_supplieractivity_for_api_supplier_activity_srv": {
+          "description": "Get the total count of entities in the A_SupplierActivity collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        }
+      }
+    },
+    "sap-s4-ce-purchaseorder-0001": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for the sap_self service.",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "batch_for_sap_self": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "list_purchaseorder_for_sap_self": {
+          "description": "Retrieve a list of entities from the PurchaseOrder collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PurchaseOrder": "4500000001",
+                "Supplier": "VENDOR-1001",
+                "CompanyCode": "1000",
+                "DocumentCurrency": "USD",
+                "PurchasingOrganization": "1000",
+                "PurchaseOrderDate": "/Date(1740000000000)/",
+                "NetAmount": "75000.00"
+              },
+              {
+                "PurchaseOrder": "4500000002",
+                "Supplier": "VENDOR-1002",
+                "CompanyCode": "1000",
+                "DocumentCurrency": "USD",
+                "PurchasingOrganization": "1000",
+                "PurchaseOrderDate": "/Date(1740000000000)/",
+                "NetAmount": "150000.00"
+              }
+            ]
+          }
+        },
+        "get_purchaseorder_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the PurchaseOrder collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseOrder": "4500000001",
+            "Supplier": "VENDOR-1001",
+            "CompanyCode": "1000",
+            "DocumentCurrency": "USD",
+            "PurchasingOrganization": "1000",
+            "PurchaseOrderDate": "/Date(1740000000000)/",
+            "NetAmount": "75000.00"
+          }
+        },
+        "count_purchaseorder_for_sap_self": {
+          "description": "Get the total count of entities in the PurchaseOrder collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        },
+        "list_purchaseorderitem_for_sap_self": {
+          "description": "Retrieve a list of entities from the PurchaseOrderItem collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PurchaseOrder": "4500000001",
+                "PurchaseOrderItem": "00011",
+                "Material": "MAT-0001",
+                "OrderQuantity": "100",
+                "NetPriceAmount": "500.00",
+                "DocumentCurrency": "USD",
+                "CommodityCode": "7208.10.30"
+              },
+              {
+                "PurchaseOrder": "4500000002",
+                "PurchaseOrderItem": "00012",
+                "Material": "MAT-0002",
+                "OrderQuantity": "200",
+                "NetPriceAmount": "1000.00",
+                "DocumentCurrency": "USD",
+                "CommodityCode": "7208.10.30"
+              }
+            ]
+          }
+        },
+        "get_purchaseorderitem_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the PurchaseOrderItem collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseOrder": "4500000001",
+            "PurchaseOrderItem": "00011",
+            "Material": "MAT-0001",
+            "OrderQuantity": "100",
+            "NetPriceAmount": "500.00",
+            "DocumentCurrency": "USD",
+            "CommodityCode": "7208.10.30"
+          }
+        },
+        "count_purchaseorderitem_for_sap_self": {
+          "description": "Get the total count of entities in the PurchaseOrderItem collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        },
+        "list_purchaseorderscheduleline_for_sap_self": {
+          "description": "Retrieve a list of entities from the PurchaseOrderScheduleLine collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PurchaseOrder": "4500000001",
+                "PurchaseOrderItem": "00011",
+                "ScheduleLine": "0001",
+                "ScheduleLineDeliveryDate": "/Date(1745000000000)/",
+                "ScheduleLineOrderQuantity": "50"
+              },
+              {
+                "PurchaseOrder": "4500000002",
+                "PurchaseOrderItem": "00012",
+                "ScheduleLine": "0002",
+                "ScheduleLineDeliveryDate": "/Date(1745000000000)/",
+                "ScheduleLineOrderQuantity": "100"
+              }
+            ]
+          }
+        },
+        "get_purchaseorderscheduleline_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the PurchaseOrderScheduleLine collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseOrder": "4500000001",
+            "PurchaseOrderItem": "00011",
+            "ScheduleLine": "0001",
+            "ScheduleLineDeliveryDate": "/Date(1745000000000)/",
+            "ScheduleLineOrderQuantity": "50"
+          }
+        },
+        "count_purchaseorderscheduleline_for_sap_self": {
+          "description": "Get the total count of entities in the PurchaseOrderScheduleLine collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        }
+      }
+    },
+    "sap-s4-ce-purchaserequisition-0001": {
+      "mcp_server_name": "sap.mcp/sap_self",
+      "description": "MCP server for the sap_self service.",
+      "tools": {
+        "get_metadata_sap_self": {
+          "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "batch_for_sap_self": {
+          "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "$metadata": "OData service metadata"
+          }
+        },
+        "list_purchasereqn_for_sap_self": {
+          "description": "Retrieve a list of entities from the PurchaseReqn collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PurchaseRequisition": "1000000001",
+                "PurchaseRequisitionType": "NB",
+                "PurchasingOrganization": "1000",
+                "CompanyCode": "1000"
+              },
+              {
+                "PurchaseRequisition": "1000000002",
+                "PurchaseRequisitionType": "NB",
+                "PurchasingOrganization": "1000",
+                "CompanyCode": "1000"
+              }
+            ]
+          }
+        },
+        "create_purchasereqn_for_sap_self": {
+          "description": "Create a new instance of the PurchaseReqn EntitySet in the sap_self service. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionType": "NB",
+            "PurchasingOrganization": "1000",
+            "CompanyCode": "1000"
+          }
+        },
+        "update_purchasereqn_for_sap_self": {
+          "description": "Update an entity in PurchaseReqn EntitySet in the sap_self service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionType": "NB",
+            "PurchasingOrganization": "1000",
+            "CompanyCode": "1000"
+          }
+        },
+        "get_purchasereqn_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the PurchaseReqn collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionType": "NB",
+            "PurchasingOrganization": "1000",
+            "CompanyCode": "1000"
+          }
+        },
+        "count_purchasereqn_for_sap_self": {
+          "description": "Get the total count of entities in the PurchaseReqn collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        },
+        "list_purchasereqnitem_for_sap_self": {
+          "description": "Retrieve a list of entities from the PurchaseReqnItem collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PurchaseRequisition": "1000000001",
+                "PurchaseRequisitionItem": "00011",
+                "Material": "MAT-0001",
+                "ReqnItemQty": "100",
+                "PurchaseRequisitionPrice": "500.00",
+                "Currency": "USD",
+                "Plant": "1000",
+                "DeliveryDate": "/Date(1746000000000)/"
+              },
+              {
+                "PurchaseRequisition": "1000000002",
+                "PurchaseRequisitionItem": "00012",
+                "Material": "MAT-0002",
+                "ReqnItemQty": "200",
+                "PurchaseRequisitionPrice": "1000.00",
+                "Currency": "USD",
+                "Plant": "1000",
+                "DeliveryDate": "/Date(1746000000000)/"
+              }
+            ]
+          }
+        },
+        "create_purchasereqnitem_for_sap_self": {
+          "description": "Create a new instance of the PurchaseReqnItem EntitySet in the sap_self service. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionItem": "00011",
+            "Material": "MAT-0001",
+            "ReqnItemQty": "100",
+            "PurchaseRequisitionPrice": "500.00",
+            "Currency": "USD",
+            "Plant": "1000",
+            "DeliveryDate": "/Date(1746000000000)/"
+          }
+        },
+        "update_purchasereqnitem_for_sap_self": {
+          "description": "Update an entity in PurchaseReqnItem EntitySet in the sap_self service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionItem": "00011",
+            "Material": "MAT-0001",
+            "ReqnItemQty": "100",
+            "PurchaseRequisitionPrice": "500.00",
+            "Currency": "USD",
+            "Plant": "1000",
+            "DeliveryDate": "/Date(1746000000000)/"
+          }
+        },
+        "get_purchasereqnitem_for_sap_self": {
+          "description": "Retrieve a single entity by its key from the PurchaseReqnItem collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": {
+            "PurchaseRequisition": "1000000001",
+            "PurchaseRequisitionItem": "00011",
+            "Material": "MAT-0001",
+            "ReqnItemQty": "100",
+            "PurchaseRequisitionPrice": "500.00",
+            "Currency": "USD",
+            "Plant": "1000",
+            "DeliveryDate": "/Date(1746000000000)/"
+          }
+        },
+        "count_purchasereqnitem_for_sap_self": {
+          "description": "Get the total count of entities in the PurchaseReqnItem collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+          "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+          },
+          "mock_response": 5
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "trade-disruption-intelligence-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 8,
+    "total_tools": 43,
+    "generated_from": [
+      "translation.json"
+    ],
+    "generation_date": "2026-10-26"
+  }
+}

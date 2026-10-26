@@ -1,0 +1,26 @@
+requirements:
+  agent_response_requirements:
+    - 'When asked which open purchase orders are affected by a tariff or duty change, the agent returns a list of affected orders, products, and suppliers sourced from S/4HANA and Ariba, not an empty or generic reply.'
+    - 'When performing an impact assessment, the agent returns a landed cost delta and margin exposure calculation for affected orders, referencing the source cost and pricing data it retrieved.'
+    - 'When asked for supplier risk information, the agent returns a ranked list of at-risk suppliers with their risk scores and flags any available alternative sourcing options.'
+    - 'When generating a response brief, the agent produces a structured output with prioritised actions — at minimum re-route, re-source, expedite, or reprice — each assigned to a team or owner.'
+    - 'When asked for tariff classification, the agent returns available classification data for the requested product or order and explicitly flags any duty rate data that is not available.'
+    - 'When asked for a post-event leadership summary, the agent produces a structured executive brief covering total exposure, actions taken, and available outcome data.'
+    - 'When an upstream API is unavailable, the agent informs the user of the limitation, identifies which system is unavailable, and returns partial results from other available sources rather than failing the entire response.'
+    - 'When asked for an action tracking update, the agent returns the current state of each recommended action and its assigned owner.'
+  tool_requirements:
+    - 'Agent must call list_purchaseorder_for_sap_self to retrieve open purchase orders when a disruption scope query is made, rather than answering from prior context.'
+    - 'Agent must call list_purchaseorderitem_for_sap_self to retrieve order item details including material, commodity code, and net price when assessing affected orders.'
+    - 'Agent must call POST_suppliers_exposureRequest_pages_pageNo or GET_suppliers_smVendorId_exposures to retrieve supplier risk exposure data when a supplier risk query is made.'
+    - 'Agent must call extractCostGroupDataForExternalAppsUsingGET or extractCostGroupMetaDataForExternalAppsUsingGET to retrieve cost breakdown data when performing a landed cost delta calculation.'
+    - 'Agent must call create_purchasereqn_for_sap_self only after the user has explicitly confirmed the requisition details in conversation.'
+    - 'Agent must call GetDetails or GetCount from the procurement reporting server when a spend or order reporting query is made.'
+    - 'Agent must call GET_engagements or GET_engagements_workspaceId to retrieve active mitigation engagement status when assessing at-risk supplier response actions.'
+    - 'Agent must not call create_purchasereqn_for_sap_self before presenting requisition details to the user and receiving explicit confirmation.'
+  rule_compliance_requirements:
+    - 'WHEN the user requests creation of a purchase requisition, the agent MUST present the requisition details for confirmation and MUST NOT call create_purchasereqn_for_sap_self before the user confirms.'
+    - 'WHEN an upstream API returns an error, the agent MUST inform the user which system is unavailable and MUST NOT state that data is complete when it is partial.'
+    - 'WHEN stating any figure, order detail, or supplier attribute, the agent MUST use only values retrieved from a tool in the current conversation and MUST NOT invent or infer values absent from tool output.'
+    - 'WHEN the user asks the agent to perform an action outside the scope of trade disruption response — such as processing a financial posting or modifying accounting records — the agent MUST decline and explain that the action is out of scope.'
+    - 'WHEN cost or pricing data is incomplete or unavailable for one or more affected orders, the agent MUST explicitly flag the affected orders and state the limitation rather than silently omitting them from the calculation.'
+    - 'WHEN tariff rate data is not available from the active APIs, the agent MUST state that limitation clearly and MUST NOT fabricate a duty rate.'

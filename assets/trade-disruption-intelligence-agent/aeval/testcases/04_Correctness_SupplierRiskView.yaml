@@ -1,0 +1,36 @@
+id: 04_Correctness_SupplierRiskView
+description: >
+  Happy path for UJ-03 — procurement manager requests a supplier risk view for suppliers
+  affected by the tariff change. Agent retrieves risk exposure from Ariba and engagement status,
+  returns a ranked supplier list with risk scores and flags alternative sourcing options.
+tags:
+  - correctness
+  - supplier_risk
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a procurement manager overseeing a supplier base with Southeast Asia import exposure.
+        A 15% tariff increase has just hit electronics components from that region.
+        You want to know which of your suppliers are at highest risk and whether alternative
+        sources exist.
+        Known information: you are focused on electronics component suppliers with Southeast Asia
+        origin; you want risk scores and alternative options.
+        Unknown information: exact risk scores and engagement status — the agent must retrieve these.
+        If the agent returns a ranked list of at-risk suppliers, ask which one has the highest
+        risk score and whether any active mitigation engagement is in place for them.
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The response contains a ranked list of at-risk suppliers with risk scores or risk level indicators grounded in data retrieved from Ariba during this conversation.'
+      - check: 'The response indicates whether alternative sourcing options are available for the highest-risk suppliers, or explicitly states that none were found.'
+      - check: 'Every supplier name, risk score, and engagement detail stated in the response is grounded in tool output from this conversation.'
+    rule_compliance_validations:
+      - check: 'The agent does not state a risk score or engagement status for any supplier that it did not retrieve from a tool in this conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: POST_suppliers_exposureRequest_pages_pageNo
+          output:
+            check: 'The tool returns a non-error response carrying supplier risk exposure data with id and status fields at minimum.'
+        - tool: GET_engagements
+          output:
+            check: 'The tool returns a non-error response carrying engagement records with engagementId, supplierId, status, and ownerName fields.'

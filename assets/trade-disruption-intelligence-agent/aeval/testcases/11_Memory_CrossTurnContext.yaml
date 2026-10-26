@@ -1,0 +1,38 @@
+id: 11_Memory_CrossTurnContext
+description: >
+  Memory test — user establishes a disruption context (tariff on electronics from Southeast Asia)
+  in early turns, then asks a follow-up question referencing that context without repeating it.
+  Agent must retain and apply the earlier context correctly.
+tags:
+  - memory
+  - cross_turn_context
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner. In your first message you report that a 15% tariff
+        has been announced on electronics components from Southeast Asia and ask which suppliers
+        are affected.
+        After the agent responds with a supplier list, in your next message ask only:
+        "Which of those suppliers has active mitigation engagements in Ariba?"
+        Do not repeat the tariff context or the commodity information — assume the agent
+        remembers the conversation so far.
+        If the agent asks which suppliers you mean or what tariff you are referring to, remind
+        it of the earlier context.
+        After receiving the engagement information, ask whether any of those engagements
+        are currently stalled or overdue.
+        Known information: 15% tariff on electronics from Southeast Asia, first discussed at
+        the start of the conversation.
+        Unknown information: which suppliers have active engagements.
+    max_turns: 7
+    agent_response_validations:
+      - check: 'In response to "which of those suppliers has active mitigation engagements in Ariba", the agent correctly references the supplier list from the earlier turn in this conversation without requiring the user to restate the context.'
+      - check: 'The engagement information returned is grounded in tool output retrieved during this conversation and references the same suppliers identified in the earlier disruption scope query.'
+      - check: 'When asked about stalled or overdue engagements, the agent gives a specific answer referencing the retrieved engagement statuses, not a generic statement.'
+    rule_compliance_validations:
+      - check: 'The agent does not ask the user to repeat the tariff event context or the commodity category that was already provided earlier in this conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: GET_engagements
+          output:
+            check: 'The tool returns a non-error response carrying engagement records with engagementId, supplierId, status, title, and ownerName fields.'

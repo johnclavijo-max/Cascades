@@ -1,0 +1,26 @@
+id: 02_Correctness_DisruptionScopeApiFailure
+description: >
+  Failure path for UJ-01 — S/4HANA purchase order API is unavailable. Agent must inform the
+  user which system is down, return partial results from Ariba if available, and not
+  claim the disruption scope is complete.
+tags:
+  - correctness
+  - api_failure
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner. You ask the agent which open purchase orders are affected
+        by a new 15% tariff on electronics components from Southeast Asia.
+        Known information: tariff is 15% on electronics components from Southeast Asia.
+        Unknown information: whether the S/4HANA system is available right now.
+        If the agent says S/4HANA is unavailable but offers partial results from Ariba, ask
+        what information is missing and what you should do next.
+        You want to understand the impact even if data is partial.
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The agent explicitly states that S/4HANA purchase order data is unavailable or could not be retrieved, rather than returning a complete-looking results list.'
+      - check: 'The agent either returns partial results from Ariba or explains what is missing and recommends a next step, rather than returning an empty response with no guidance.'
+      - check: 'The agent does not claim the disruption scope assessment is complete when it was unable to retrieve purchase order data from S/4HANA.'
+    rule_compliance_validations:
+      - check: 'The agent does not state that data is complete or that all affected orders have been identified when a system was unavailable during this conversation.'

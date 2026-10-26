@@ -1,0 +1,29 @@
+id: 05_Correctness_ResponseBriefAndActions
+description: >
+  Happy path for UJ-04 — planner requests a cross-team response brief after impact assessment
+  is complete, then asks for an action tracking update. Agent generates a structured brief with
+  prioritised recommendations per team and tracks action status (M3 and M4 achieved).
+tags:
+  - correctness
+  - response_brief
+  - action_tracking
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner. An impact assessment for a 15% tariff on Southeast Asia
+        electronics components has just been completed, showing landed cost increases across
+        12 open purchase orders.
+        You want the agent to generate a cross-team response brief with recommended actions.
+        Known information: 12 affected orders, 15% tariff increase, suppliers in Southeast Asia.
+        Unknown information: what specific actions should be prioritised and for which teams.
+        After the agent generates the response brief, ask for the current status of the
+        recommended actions and who owns each one.
+        If the agent asks which teams to address, say procurement, supply chain, and finance.
+    max_turns: 7
+    agent_response_validations:
+      - check: 'The response brief contains at least one prioritised action from the set: re-route, re-source, expedite, reprice — each assigned to a team (procurement, supply chain, or finance).'
+      - check: 'When asked for action tracking status, the agent returns the current state and assigned owner for each recommended action, grounded in the actions generated earlier in this conversation.'
+      - check: 'The response brief is structured with clear sections or groupings — not a single unstructured paragraph — so the reader can identify team assignments without parsing free text.'
+    rule_compliance_validations:
+      - check: 'The agent does not assign an action to a team or owner that was not discussed or confirmed in this conversation without flagging it as a suggested assignment pending confirmation.'

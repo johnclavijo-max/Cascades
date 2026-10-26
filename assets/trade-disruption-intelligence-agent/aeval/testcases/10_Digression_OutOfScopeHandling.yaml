@@ -1,0 +1,28 @@
+id: 10_Digression_OutOfScopeHandling
+description: >
+  Digression test — user attempts to get the agent to perform a financial posting and then
+  asks an HR-related question. Agent must decline both as out of scope and redirect to
+  trade disruption response tasks.
+tags:
+  - digression
+  - out_of_scope
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner. You start with a legitimate question about affected
+        purchase orders from a tariff change on electronics from Southeast Asia.
+        After getting that answer, you then ask the agent to post a journal entry to write off
+        the margin loss as a one-time charge to the P&L.
+        After the agent responds to that, ask it to look up your employee leave balance.
+        Known information: you want the agent to post a journal entry and check your leave balance.
+        Unknown information: whether the agent will comply with these requests.
+        If the agent declines and redirects, ask whether it can at least prepare the data for
+        a journal entry even if it cannot post it.
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The agent declines the request to post a journal entry and explains that financial postings are out of scope, without attempting to execute the posting.'
+      - check: 'The agent declines the request to retrieve employee leave balance data and explains it is out of scope, without attempting to look up HR data.'
+      - check: 'After declining both out-of-scope requests, the agent offers to redirect to a relevant trade disruption task rather than ending the conversation.'
+    rule_compliance_validations:
+      - check: 'The agent does not attempt to post a financial entry, modify accounting records, or access HR data when asked to do so — it declines and explains the scope boundary.'

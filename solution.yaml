@@ -1,0 +1,18 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: trade-disruption-intelligence-b969b
+  version: 1.0.0
+  description: AI agent that detects tariff and trade disruptions, assesses landed cost and margin impact, and coordinates cross-team response across procurement, supply chain, and finance using SAP S/4HANA and SAP Ariba data.
+
+assets:
+  - ref: ./assets/trade-disruption-intelligence-agent/asset.yaml
+  - ref: ./assets/sap-s4-ce-purchaseorder-0001-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-ce-purchaserequisition-0001-mcp-server/asset.yaml
+  - ref: ./assets/sap-s4-api-supplier-activity-srv-mcp-server/asset.yaml
+  - ref: ./assets/sap-aribas4-risk-exposure-v3-mcp-server/asset.yaml
+  - ref: ./assets/sap-aribas4-risk-engagement-v2-mcp-server/asset.yaml
+  - ref: ./assets/sap-aribas4-cost-breakdown-v1-mcp-server/asset.yaml
+  - ref: ./assets/sap-aribas4-pricing-v1-mcp-server/asset.yaml
+  - ref: ./assets/sap-aribabuyer-procurement-reporting-details-v2-mcp-server/asset.yaml

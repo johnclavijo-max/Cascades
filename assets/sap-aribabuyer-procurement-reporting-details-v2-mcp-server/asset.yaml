@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-aribabuyer-procurement-reporting-details-v2-mcp-server
+  description: Exposes SAP Ariba Operational Procurement Reporting v2 API as MCP tools for spend visibility and alternative supplier identification.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: procurement_reporting_details_v2
+    kind: api
+    ordId: sap.aribabuyer:apiResource:procurement_reporting_details:v2
+
+provides:
+  apis:
+    - name: sap-aribabuyer-procurement-reporting-details-v2-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribabuyer-procurement-reporting-details-v2-mcp-server:v1

@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-aribas4-risk-engagement-v2-mcp-server
+  description: Exposes SAP Ariba Risk Engagements v2 API as MCP tools for querying active supplier risk mitigation engagements.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: risk_engagement_v2
+    kind: api
+    ordId: sap.aribas4:apiResource:risk_engagement:v2
+
+provides:
+  apis:
+    - name: sap-aribas4-risk-engagement-v2-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-risk-engagement-v2-mcp-server:v1

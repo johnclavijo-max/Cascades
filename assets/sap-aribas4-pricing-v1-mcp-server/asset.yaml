@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-aribas4-pricing-v1-mcp-server
+  description: Exposes SAP Ariba Pricing v1 API as MCP tools for retrieving baseline landed cost pricing per material.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: pricing_v1
+    kind: api
+    ordId: sap.aribas4:apiResource:pricing:v1
+
+provides:
+  apis:
+    - name: sap-aribas4-pricing-v1-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-pricing-v1-mcp-server:v1

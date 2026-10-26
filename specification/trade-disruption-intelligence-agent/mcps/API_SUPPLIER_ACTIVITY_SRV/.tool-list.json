@@ -1,0 +1,2644 @@
+[
+  {
+    "name": "get_metadata_api_supplier_activity_srv",
+    "title": "get_metadata_api_supplier_activity_srv",
+    "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+    "odataType": {
+      "metadataRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "batch_for_api_supplier_activity_srv",
+    "title": "batch_for_api_supplier_activity_srv",
+    "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+    "odataType": {
+      "batchRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "list_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Retrieve a list of entities from the A_SuplrActyDescription collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "create_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Create a new instance of the A_SuplrActyDescription EntitySet in the api_supplier_activity_srv service. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "create",
+        "parameters": [
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          },
+          {
+            "name": "SuplrActyDescription",
+            "newParameterName": "suplractydescription"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "update_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Update an entity in A_SuplrActyDescription EntitySet in the api_supplier_activity_srv service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "update",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          },
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          },
+          {
+            "name": "SuplrActyDescription",
+            "newParameterName": "suplractydescription"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "delete_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "delete_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Delete an entity from A_SuplrActyDescription EntitySet in the api_supplier_activity_srv service.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "delete",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          },
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "get_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Retrieve a single entity by its key from the A_SuplrActyDescription collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          },
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_a_suplractydescription_for_api_supplier_activity_srv",
+    "title": "count_A_SuplrActyDescription_for_api_supplier_activity_srv",
+    "description": "Get the total count of entities in the A_SuplrActyDescription collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyDescription",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "list_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Retrieve a list of entities from the A_SuplrActyParticipant collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "create_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Create a new instance of the A_SuplrActyParticipant EntitySet in the api_supplier_activity_srv service. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "create",
+        "parameters": [
+          {
+            "name": "UserID",
+            "newParameterName": "userid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "update_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Update an entity in A_SuplrActyParticipant EntitySet in the api_supplier_activity_srv service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "update",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "UserID",
+            "newParameterName": "userid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "delete_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "delete_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Delete an entity from A_SuplrActyParticipant EntitySet in the api_supplier_activity_srv service.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "delete",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "get_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Retrieve a single entity by its key from the A_SuplrActyParticipant collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_a_suplractyparticipant_for_api_supplier_activity_srv",
+    "title": "count_A_SuplrActyParticipant_for_api_supplier_activity_srv",
+    "description": "Get the total count of entities in the A_SuplrActyParticipant collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyParticipant",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_a_suplractypurchaserresp_for_api_supplier_activity_srv",
+    "title": "list_A_SuplrActyPurchaserResp_for_api_supplier_activity_srv",
+    "description": "Retrieve a list of entities from the A_SuplrActyPurchaserResp collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyPurchaserResp",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_a_suplractypurchaserresp_for_api_supplier_activity_srv",
+    "title": "update_A_SuplrActyPurchaserResp_for_api_supplier_activity_srv",
+    "description": "Update an entity in A_SuplrActyPurchaserResp EntitySet in the api_supplier_activity_srv service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyPurchaserResp",
+        "crudOperation": "update",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "UserID",
+            "newParameterName": "userid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_a_suplractypurchaserresp_for_api_supplier_activity_srv",
+    "title": "get_A_SuplrActyPurchaserResp_for_api_supplier_activity_srv",
+    "description": "Retrieve a single entity by its key from the A_SuplrActyPurchaserResp collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyPurchaserResp",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_a_suplractypurchaserresp_for_api_supplier_activity_srv",
+    "title": "count_A_SuplrActyPurchaserResp_for_api_supplier_activity_srv",
+    "description": "Get the total count of entities in the A_SuplrActyPurchaserResp collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActyPurchaserResp",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "list_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Retrieve a list of entities from the A_SuplrActySupplier collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "create_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Create a new instance of the A_SuplrActySupplier EntitySet in the api_supplier_activity_srv service. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "create",
+        "parameters": [
+          {
+            "name": "BusinessPartner",
+            "newParameterName": "businesspartner"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "update_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Update an entity in A_SuplrActySupplier EntitySet in the api_supplier_activity_srv service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "update",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "BusinessPartner",
+            "newParameterName": "businesspartner"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "delete_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "delete_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Delete an entity from A_SuplrActySupplier EntitySet in the api_supplier_activity_srv service.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "delete",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "get_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Retrieve a single entity by its key from the A_SuplrActySupplier collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SuplrActyPartyUUID",
+            "newParameterName": "suplractypartyuuid"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_a_suplractysupplier_for_api_supplier_activity_srv",
+    "title": "count_A_SuplrActySupplier_for_api_supplier_activity_srv",
+    "description": "Get the total count of entities in the A_SuplrActySupplier collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SuplrActySupplier",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "list_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Retrieve a list of entities from the A_SupplierActivity collection in the api_supplier_activity_srv service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "read",
+        "parameters": [
+          {
+            "name": "filter"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "orderby"
+          },
+          {
+            "name": "top"
+          },
+          {
+            "name": "skip"
+          },
+          {
+            "name": "expand"
+          },
+          {
+            "name": "inlinecount"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "create_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Create a new instance of the A_SupplierActivity EntitySet in the api_supplier_activity_srv service. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "create",
+        "parameters": [
+          {
+            "name": "PurgCatUUID",
+            "newParameterName": "purgcatuuid"
+          },
+          {
+            "name": "SuplrActyName",
+            "newParameterName": "suplractyname"
+          },
+          {
+            "name": "StartDate",
+            "newParameterName": "startdate"
+          },
+          {
+            "name": "EndDate",
+            "newParameterName": "enddate"
+          },
+          {
+            "name": "SuplrActyPriority",
+            "newParameterName": "suplractypriority"
+          },
+          {
+            "name": "SuplrActyType",
+            "newParameterName": "suplractytype"
+          },
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          },
+          {
+            "name": "to_SuplrActyDescription",
+            "newParameterName": "to_suplractydescription"
+          },
+          {
+            "name": "to_SuplrActyParticipant",
+            "newParameterName": "to_suplractyparticipant"
+          },
+          {
+            "name": "to_SuplrActyPurchaserResp",
+            "newParameterName": "to_suplractypurchaserresp"
+          },
+          {
+            "name": "to_SuplrActySupplier",
+            "newParameterName": "to_suplractysupplier"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "update_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Update an entity in A_SupplierActivity EntitySet in the api_supplier_activity_srv service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "update",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          },
+          {
+            "name": "PurgCatUUID",
+            "newParameterName": "purgcatuuid"
+          },
+          {
+            "name": "SuplrActyName",
+            "newParameterName": "suplractyname"
+          },
+          {
+            "name": "StartDate",
+            "newParameterName": "startdate"
+          },
+          {
+            "name": "EndDate",
+            "newParameterName": "enddate"
+          },
+          {
+            "name": "SuplrActyPriority",
+            "newParameterName": "suplractypriority"
+          },
+          {
+            "name": "SuplrActyType",
+            "newParameterName": "suplractytype"
+          },
+          {
+            "name": "Language",
+            "newParameterName": "language"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "delete_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "delete_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Delete an entity from A_SupplierActivity EntitySet in the api_supplier_activity_srv service.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "delete",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "get_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Retrieve a single entity by its key from the A_SupplierActivity collection in the api_supplier_activity_srv service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "readByKey",
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          },
+          {
+            "name": "select"
+          },
+          {
+            "name": "expand"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_a_supplieractivity_for_api_supplier_activity_srv",
+    "title": "count_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Get the total count of entities in the A_SupplierActivity collection in the api_supplier_activity_srv service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "crudOperation": "count",
+        "parameters": [
+          {
+            "name": "filter"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_to_suplractydescription",
+    "title": "list_to_SuplrActyDescription_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Navigate from A_SupplierActivity to related A_SuplrActyDescriptionType entities via the 'to_SuplrActyDescription' navigation property. Supports OData query options for filtering, sorting, paging, expanding, counting, and selecting specific properties. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyDescription",
+          "crudOperation": "read",
+          "parameters": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "orderby"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "skip"
+            },
+            {
+              "name": "expand"
+            },
+            {
+              "name": "inlinecount"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_to_suplractydescription",
+    "title": "create_to_SuplrActyDescription_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Create a new A_SuplrActyDescriptionType entity via the 'to_SuplrActyDescription' navigation property of A_SupplierActivity. Provide the parent key and the properties of the new entity. If the structure is unknown, call get_metadata_api_supplier_activity_srv tool first.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyDescription",
+          "crudOperation": "create",
+          "parameters": [
+            {
+              "name": "Language",
+              "newParameterName": "language"
+            },
+            {
+              "name": "SuplrActyDescription",
+              "newParameterName": "suplractydescription"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_to_suplractydescription",
+    "title": "count_to_SuplrActyDescription_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Count A_SuplrActyDescriptionType entities accessible via the 'to_SuplrActyDescription' navigation property of A_SupplierActivity in the api_supplier_activity_srv service. Returns the total number of matching entities.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyDescription",
+          "crudOperation": "count",
+          "parameters": [
+            {
+              "name": "filter"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_to_suplractyparticipant",
+    "title": "get_to_SuplrActyParticipant_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Navigate from A_SupplierActivity to the related A_SuplrActyParticipantType entity via the 'to_SuplrActyParticipant' navigation property. Supports $select and $expand query options. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyParticipant",
+          "crudOperation": "readByKey",
+          "parameters": [
+            {
+              "name": "select"
+            },
+            {
+              "name": "expand"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_to_suplractyparticipant",
+    "title": "update_to_SuplrActyParticipant_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Update the A_SuplrActyParticipantType entity navigated from A_SupplierActivity via the 'to_SuplrActyParticipant' navigation property (HTTP PATCH). Provide the parent key and the properties to update. If the structure is unknown, call get_metadata_api_supplier_activity_srv tool first.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyParticipant",
+          "crudOperation": "update",
+          "parameters": [
+            {
+              "name": "UserID",
+              "newParameterName": "userid"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "get_to_suplractypurchaserresp",
+    "title": "get_to_SuplrActyPurchaserResp_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Navigate from A_SupplierActivity to the related A_SuplrActyPurchaserRespType entity via the 'to_SuplrActyPurchaserResp' navigation property. Supports $select and $expand query options. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyPurchaserResp",
+          "crudOperation": "readByKey",
+          "parameters": [
+            {
+              "name": "select"
+            },
+            {
+              "name": "expand"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "update_to_suplractypurchaserresp",
+    "title": "update_to_SuplrActyPurchaserResp_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Update the A_SuplrActyPurchaserRespType entity navigated from A_SupplierActivity via the 'to_SuplrActyPurchaserResp' navigation property (HTTP PATCH). Provide the parent key and the properties to update. If the structure is unknown, call get_metadata_api_supplier_activity_srv tool first.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActyPurchaserResp",
+          "crudOperation": "update",
+          "parameters": [
+            {
+              "name": "UserID",
+              "newParameterName": "userid"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "list_to_suplractysupplier",
+    "title": "list_to_SuplrActySupplier_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Navigate from A_SupplierActivity to related A_SuplrActySupplierType entities via the 'to_SuplrActySupplier' navigation property. Supports OData query options for filtering, sorting, paging, expanding, counting, and selecting specific properties. If the structure of the entity is not known, call get_metadata_api_supplier_activity_srv tool first to get the metadata.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActySupplier",
+          "crudOperation": "read",
+          "parameters": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "orderby"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "skip"
+            },
+            {
+              "name": "expand"
+            },
+            {
+              "name": "inlinecount"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "create_to_suplractysupplier",
+    "title": "create_to_SuplrActySupplier_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Create a new A_SuplrActySupplierType entity via the 'to_SuplrActySupplier' navigation property of A_SupplierActivity. Provide the parent key and the properties of the new entity. If the structure is unknown, call get_metadata_api_supplier_activity_srv tool first.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActySupplier",
+          "crudOperation": "create",
+          "parameters": [
+            {
+              "name": "BusinessPartner",
+              "newParameterName": "businesspartner"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "location"
+        },
+        {
+          "name": "content-id"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "count_to_suplractysupplier",
+    "title": "count_to_SuplrActySupplier_in_A_SupplierActivity_for_api_supplier_activity_srv",
+    "description": "Count A_SuplrActySupplierType entities accessible via the 'to_SuplrActySupplier' navigation property of A_SupplierActivity in the api_supplier_activity_srv service. Returns the total number of matching entities.",
+    "odataType": {
+      "entitySet": {
+        "name": "A_SupplierActivity",
+        "navigationProperty": {
+          "name": "to_SuplrActySupplier",
+          "crudOperation": "count",
+          "parameters": [
+            {
+              "name": "filter"
+            }
+          ]
+        },
+        "parameters": [
+          {
+            "name": "SuplrActyUUID",
+            "newParameterName": "suplractyuuid"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  }
+]

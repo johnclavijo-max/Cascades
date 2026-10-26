@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-aribas4-risk-exposure-v3-mcp-server
+  description: Exposes SAP Ariba Risk Exposure v3 API as MCP tools for querying supplier risk scores and categories.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.json
+
+requires:
+  - name: risk_exposure_v3
+    kind: api
+    ordId: sap.aribas4:apiResource:risk_exposure:v3
+
+provides:
+  apis:
+    - name: sap-aribas4-risk-exposure-v3-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-risk-exposure-v3-mcp-server:v1

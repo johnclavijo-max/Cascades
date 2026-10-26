@@ -1,0 +1,34 @@
+id: 01_Correctness_DisruptionScopeQuery
+description: >
+  Happy path for UJ-01 — supply chain planner asks which open purchase orders are affected
+  by a tariff change on electronics from Southeast Asia. Agent queries S/4HANA for open POs
+  and Ariba for supplier data and returns a prioritised list (M1 achieved).
+tags:
+  - correctness
+  - disruption_scope
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner responsible for electronics component procurement.
+        A tariff change has just been announced on electronics components imported from Southeast Asia.
+        You want to know which open purchase orders are affected.
+        Known information: the tariff affects electronics components from Southeast Asia; you want open POs.
+        Unknown information: the count and value of affected orders — the agent must retrieve these.
+        If the agent asks for a commodity code or product category, say it is electronics components, HS code 8542.
+        When the agent returns the affected orders list, confirm you have reviewed it and ask for the total count.
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response contains a list of open purchase orders affected by the tariff change, each carrying at minimum a purchase order number, supplier, and material or product description grounded in retrieved tool data.'
+      - check: 'Every order number, supplier name, and product detail stated in the response is grounded in tool output retrieved during this conversation — the agent does not state identifiers it did not retrieve.'
+      - check: 'The response indicates the total count or scope of affected orders.'
+    rule_compliance_validations:
+      - check: 'The agent does not state a specific order number, supplier name, or commodity code that it did not retrieve from a tool in this conversation.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_purchaseorder_for_sap_self
+          output:
+            check: 'The tool returns a non-error response carrying one or more purchase orders, each with a PurchaseOrder identifier, Supplier, and CompanyCode field.'
+        - tool: list_purchaseorderitem_for_sap_self
+          output:
+            check: 'The tool returns a non-error response carrying purchase order items with Material, CommodityCode, NetPriceAmount, and DocumentCurrency fields.'

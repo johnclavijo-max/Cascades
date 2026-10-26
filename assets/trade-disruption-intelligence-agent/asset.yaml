@@ -1,0 +1,63 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: agent
+
+metadata:
+  name: trade-disruption-intelligence-agent
+  description: Detects tariff and duty disruptions, identifies affected open purchase orders and suppliers, calculates landed cost delta and margin exposure, and coordinates cross-team response briefs and action tracking across procurement, supply chain, and finance.
+  version: 1.0.0
+
+provides:
+  apis:
+    - name: trade-disruption-intelligence-agent
+      kind: a2a
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.trade-disruption-intelligence-agent:v1
+
+container:
+  buildPath: .
+  port: 5000
+
+requires:
+  - name: sap-s4-ce-purchaseorder-0001-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-ce-purchaseorder-0001-mcp-server:v1
+  - name: sap-s4-ce-purchaserequisition-0001-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-ce-purchaserequisition-0001-mcp-server:v1
+  - name: sap-s4-api-supplier-activity-srv-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-api-supplier-activity-srv-mcp-server:v1
+  - name: sap-aribas4-risk-exposure-v3-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-risk-exposure-v3-mcp-server:v1
+  - name: sap-aribas4-risk-engagement-v2-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-risk-engagement-v2-mcp-server:v1
+  - name: sap-aribas4-cost-breakdown-v1-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-cost-breakdown-v1-mcp-server:v1
+  - name: sap-aribas4-pricing-v1-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribas4-pricing-v1-mcp-server:v1
+  - name: sap-aribabuyer-procurement-reporting-details-v2-mcp-server
+    kind: mcp-server
+    ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-aribabuyer-procurement-reporting-details-v2-mcp-server:v1
+
+probes:
+  startup:
+    path: /.well-known/agent.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

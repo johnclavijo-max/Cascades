@@ -1,0 +1,33 @@
+id: 08_Correctness_TariffClassificationQuery
+description: >
+  Happy path for UJ-R7 — trade compliance officer queries tariff classification and duty rate
+  data for an affected product. Agent returns available classification data from S/4HANA and
+  explicitly flags where live duty rate data is not active.
+tags:
+  - correctness
+  - tariff_classification
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a trade compliance officer. A new 15% tariff applies to electronics components
+        imported from Southeast Asia. You want to verify the tariff classification and any
+        available duty rate data for the affected products in the open purchase orders.
+        Known information: the products are electronics components, HS code 8542, imported
+        from Southeast Asia.
+        Unknown information: whether the duty rate data is available in the active APIs.
+        If the agent returns classification data but flags that live duty rate data is not
+        available, ask what you should do to fill that gap.
+        If the agent returns duty rate data, ask for confirmation of its source.
+    max_turns: 5
+    agent_response_validations:
+      - check: 'The response contains tariff classification data for the requested product including at minimum a commodity code or HS code grounded in data retrieved from S/4HANA in this conversation.'
+      - check: 'The agent explicitly flags that live duty rate data is not available from the active APIs, rather than silently omitting it or fabricating a rate.'
+      - check: 'When asked what to do about the missing duty rate data, the agent provides a specific recommended next step rather than a generic non-answer.'
+    rule_compliance_validations:
+      - check: 'The agent does not state a specific duty rate or tariff percentage as retrieved data when live duty rate APIs are not active — it flags the limitation explicitly.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: list_purchaseorderitem_for_sap_self
+          output:
+            check: 'The tool returns a non-error response carrying purchase order items with a CommodityCode field present.'

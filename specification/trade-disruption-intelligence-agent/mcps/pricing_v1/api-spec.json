@@ -1,0 +1,1222 @@
+{
+  "swagger": "2.0",
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "To use this API, you need to obtain the OAuth client credentials (client ID and secret) from SAP Ariba. After that, pass these client credentials to the SAP Ariba API token endpoint to obtain an access token.",
+      "tokenUrl": "https://{regionOauth}/oauth/token",
+      "flow": "application",
+      "scopes": {}
+    }
+  },
+  "externalDocs": {
+    "description": "More information is available at https://developer.ariba.com/api where you can select your region's datacenter.",
+    "url": "https://developer.ariba.com/api"
+  },
+  "info": {
+    "version": "1.0.0",
+    "title": "Pricing API for Product Sourcing Price Information",
+    "description": "This Pricing Data API enables you to retrieve all changes incurred in Product Sourcing database for the specified timerange upto 24-hours. Changes includes BOM, Items, AML, Prices, Splits, RFx, RFxItem, RFxItemSupplier, RFxStandardTerm, RFxCustomTerm, ItemPrice, ItemAMLSplit, ItemAttribute, BOMSplits, ItemPlant, ItemProgram, Plant,Program, LeadTime, CustomFields, ItemTags, BomTags."
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-shortText": "API for extracting the price information from Direct Material Sourcing (DMS)",
+  "host": "sandbox.api.sap.com",
+  "basePath": "/ariba/api/pricing/v1/sandbox",
+  "schemes": [
+    "https"
+  ],
+  "x-sap-ext-overview": [
+    {
+      "name": "API Group",
+      "values": [
+        "Strategic Sourcing"
+      ]
+    },
+    {
+      "name": "API System Role",
+      "values": [
+        "SAP Ariba Sourcing"
+      ]
+    },
+    {
+      "name": "Datacenters",
+      "values": [
+        "US",
+        "EU",
+        "RU",
+        "UAE",
+        "KSA",
+        "CN",
+        "AU",
+        "JP"
+      ]
+    }
+  ],
+  "x-servers": [
+    {
+      "url": "https://{region}/api/pricing/v1/{environment}",
+      "description": "Pricing API for Product Sourcing Price Information endpoint",
+      "templates": {
+        "region": {
+          "enum": [
+            "openapi.ariba.com",
+            "eu.openapi.ariba.com",
+            "ru.openapi.ariba.com",
+            "mn1.openapi.ariba.com",
+            "mn2.openapi.ariba.com",
+            "openapi.sapariba.cn",
+            "openapi.au.cloud.ariba.com",
+            "openapi.jp.cloud.ariba.com"
+          ],
+          "default": "openapi.ariba.com",
+          "description": "The SAP Ariba region where the SAP Ariba APIs are used."
+        },
+        "regionOauth": {
+          "enum": [
+            "api.ariba.com",
+            "api-eu.ariba.com",
+            "api-ru.ariba.com",
+            "api.mn1.ariba.com",
+            "api.mn2.ariba.com",
+            "api.sapariba.cn",
+            "api.au.cloud.ariba.com",
+            "api.jp.cloud.ariba.com"
+          ],
+          "default": "api.ariba.com",
+          "description": "The SAP Ariba regional OAuth server associated with the region where the SAP Ariba APIs are used."
+        },
+        "environment": {
+          "enum": [
+            "sandbox",
+            "prod"
+          ],
+          "default": "sandbox",
+          "description": "Public URI Prefix for different environments, prod is Test or Production environment for Cloud Business Applications and sandbox is Mock environment with sample data. For more information, go to the SAP Ariba Developer Portal at https://developer.ariba.com."
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "pricing",
+      "description": "Pricing API for Product Sourcing Price Information"
+    },
+    {
+      "name": "Extract the Pricing Data Rest API",
+      "description": "The Extract Pricing Data API enables you to retrieve all changes and additions to the product sourcing pricing database within a 24-hour time range."
+    }
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "paths": {
+    "/objects": {
+      "get": {
+        "tags": [
+          "Extract Pricing Data API"
+        ],
+        "summary": "Return the required pricing information from your realm",
+        "description": "Get the pricing information from your realm either in JSON or XML format",
+        "operationId": "GetDetails",
+        "parameters": [
+          {
+            "name": "realm",
+            "in": "query",
+            "description": "Unique identifier of the realm. \n Example: s4All",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": " $filter",
+            "in": "query",
+            "description": "$filter=expression. ‘expression’ is a combination of resource parameters,$filter=expression. ‘expression’ is a combination of resource parameters, values. Operator ‘eq’ and 'in' is used to link parameter and value. Operator ‘and’ is used to link two or more parameters. For example, $filter=a eq ‘b’ and c eq 'd’. Following parameters are supported in current implementation.\n objectType(optional) \n fromDate(required) \n toDate(required) \nThe date should use the yyyy-MM-dd'T'HH:mm:ssX ISO_OFFSET_DATE_TIME date format. ex:- 2018-01-01T23:59:59-08:00  \nPricing DB objectType: RFX,RFXItem,RFXItemSupplier,RFXStandardTerm,RFXCustomTerm,Item,ItemPrice,ItemAMLSplit,Bom,AML,ItemAttribute,BomSplit,ItemPlant,\nItemProgram,Plant,Program,LeadTime,CustomFields,ItemTags,BomTags.\n\nValid  combinations are \n1. fromDate eq '2020-02-12T00:58:15-08:00' and toDate eq '2020-02-12T23:58:15-08:00' (return all ObjectTypes) \n2. objectType eq 'item' and fromdate eq '2020-02-12T00:58:15-08:00' and todate eq '2020-02-12T23:58:15-08:00'\n3. objectType in ('Item', 'RFX', 'Bom', 'Plant') and fromdate eq '2020-02-12T00:58:15-08:00' and todate eq '2020-02-12T23:58:15-08:00'\n \n Example: objectType in (ItemPrice, bom) and fromdate eq '2020-04-29T09:30:00-08:00' and todate eq '2020-04-29T21:50:00-08:00' ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/WsResponse"
+            }
+          },
+          "400": {
+            "description": "Your request is not processed becuase of an error on server side",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "401": {
+            "description": "Unauthorized request. Check oauth token is expired or you are not using correct oauth token.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized"
+            }
+          },
+          "403": {
+            "description": "you are not able to connect because of proxy or network issue",
+            "schema": {
+              "$ref": "#/definitions/Forbidden"
+            }
+          },
+          "404": {
+            "description": "the URL you requested does not exist",
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          },
+          "500": {
+            "description": "If your URL is not constructed properly, you have trailing spaces in URL, or ARIBA site is temporarily down",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "WsResponse": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ErrorMessage"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "ERROR"
+          ]
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "BomList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Bom"
+              }
+            },
+            "ItemList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Item"
+              }
+            },
+            "PlantList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Plant"
+              }
+            },
+            "RFXList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RFX"
+              }
+            },
+            "RFXItemList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RFXItem"
+              }
+            },
+            "RFXItemSupplierList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RFXItemSupplier"
+              }
+            },
+            "RFXStandardTermList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RFXStandardTerm"
+              }
+            },
+            "RFXCustomTermList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RFXCustomTerm"
+              }
+            },
+            "ItemPriceList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemPrice"
+              }
+            },
+            "ItemAMLSplitList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemAMLSplit"
+              }
+            },
+            "ItemAMLList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemAML"
+              }
+            },
+            "ItemAttributeList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemAttribute"
+              }
+            },
+            "BomSplitList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BomSplit"
+              }
+            },
+            "ItemPlantList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemPlant"
+              }
+            },
+            "ItemProgramList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemProgram"
+              }
+            },
+            "ProgramList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Program"
+              }
+            },
+            "ItemLeadTimeList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LeadTime"
+              }
+            },
+            "CustomFieldsList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CustomFields"
+              }
+            },
+            "ItemTagsList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ItemTags"
+              }
+            },
+            "BomTagsList": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BomTags"
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "items": {
+            "$ref": "#/definitions/summary"
+          }
+        }
+      },
+      "title": "WsResponse",
+      "example": {
+        "status": "OK",
+        "statusCode": 200,
+        "errorMessages": [],
+        "data": {
+          "BomList": [
+            {
+              "childItemId": "214410281",
+              "parentItemId": "EM34L34KH34W1",
+              "childEffectiveFromDate": "2009-12-27",
+              "childEffectiveToDate": "2098-12-28",
+              "childItemNumber": "2342",
+              "quantity": "1.0",
+              "itemText2": "Bom",
+              "itemNodeNumber": "1",
+              "itemGroup": "01",
+              "parentEffectiveFromDate": "2009-12-27",
+              "parentEffectiveToDate": "2099-12-01",
+              "bomNumber": "214410281",
+              "alternativeBomNumber": "300",
+              "usage": "01",
+              "technicalType": "12",
+              "active": true,
+              "lastModified": "2020-02-12T23:54:00-08:00"
+            }
+          ],
+          "PlantList": [
+            {
+              "plantId": "10",
+              "plantName": "Turner Inc",
+              "sapVendorId": "2",
+              "lastModified": "2020-02-12T23:53:58-08:00",
+              "active": true,
+              "sapplantId": "Turner"
+            }
+          ]
+        },
+        "Summary": {
+          "fromDate": "2020-02-12T00:58:1508:00",
+          "toDate": "2020-02-12T23:58:1508:00",
+          "objectType": "Bom",
+          "exportBegin": "2020-02-26T11:35:5108:00",
+          "exportEnd": "2020-02-26T11:35:5208:00",
+          "extractStatistics": {
+            "BomList": {
+              "Export": 108,
+              "Total": 108
+            },
+            "PlantList": {
+              "Export": 109,
+              "Total": 109
+            }
+          }
+        }
+      }
+    },
+    "ErrorMessage": {
+      "type": "object",
+      "properties": {
+        "errorType": {
+          "type": "string",
+          "xml": {
+            "name": "ErrorType",
+            "attribute": false,
+            "wrapped": false
+          },
+          "enum": [
+            "Error",
+            "Warning"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "xml": {
+            "name": "Message",
+            "attribute": false,
+            "wrapped": false
+          }
+        }
+      },
+      "title": "ErrorMessage"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "fromdate": {
+          "type": "string"
+        },
+        "toDate": {
+          "type": "string"
+        },
+        "objectTypes": {
+          "type": "string",
+          "enum": [
+            "Bom",
+            "Item",
+            "Plant",
+            "RFX",
+            "..."
+          ]
+        },
+        "exportBegin": {
+          "type": "string"
+        },
+        "exportEnd": {
+          "type": "string"
+        },
+        "extractStatistics": {
+          "type": "object"
+        }
+      }
+    },
+    "Bom": {
+      "type": "object",
+      "properties": {
+        "childItemId": {
+          "type": "string"
+        },
+        "parentItemId": {
+          "type": "string"
+        },
+        "childEffectiveFromDate": {
+          "type": "string"
+        },
+        "childEffectiveToDate": {
+          "type": "string"
+        },
+        "childItemNumber": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "itemText2": {
+          "type": "string"
+        },
+        "itemNodeNumber": {
+          "type": "integer"
+        },
+        "itemGroup": {
+          "type": "string"
+        },
+        "parentEffectiveFromDate": {
+          "type": "string"
+        },
+        "parentEffectiveToDate": {
+          "type": "string"
+        },
+        "bomNumber": {
+          "type": "integer"
+        },
+        "alternativeBomNumber": {
+          "type": "integer"
+        },
+        "usage": {
+          "type": "integer"
+        },
+        "technicalType": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "lastModified": {
+          "type": "string"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "integer"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "partTypeId": {
+          "type": "integer"
+        },
+        "partTypeDescription": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "classPath": {
+          "type": "string"
+        },
+        "maturityLevel": {
+          "type": "string"
+        },
+        "itemStatus": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "externalSystemId": {
+          "type": "string"
+        },
+        "uom": {
+          "type": "string"
+        },
+        "materialGroupId": {
+          "type": "string"
+        },
+        "materialGroupDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "Plant": {
+      "type": "object",
+      "properties": {
+        "plantId": {
+          "type": "integer"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapVendorId": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "sapplantId": {
+          "type": "string"
+        }
+      }
+    },
+    "RFX": {
+      "type": "object",
+      "properties": {
+        "rfxId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RFXItem": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "rfxId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RFXItemSupplier": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "rfxId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapplantId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "RFXStandardTerm": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "rfxId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapplantId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "incoterms": {
+          "type": "string"
+        },
+        "itermCategory": {
+          "type": "string"
+        },
+        "leadTime": {
+          "type": "string"
+        },
+        "manufactureName": {
+          "type": "string"
+        },
+        "manufacturePartId": {
+          "type": "string"
+        },
+        "materialGroupId": {
+          "type": "string"
+        },
+        "plant": {
+          "type": "string"
+        },
+        "supplierPartAuxiliaryId": {
+          "type": "string"
+        },
+        "supplierPartId": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "uom": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        }
+      }
+    },
+    "RFXCustomTerm": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "rfxId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapplantId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemPrice": {
+      "type": "object",
+      "properties": {
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapPlantId": {
+          "type": "string"
+        },
+        "itemId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "priceType": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemAMLSplit": {
+      "type": "object",
+      "properties": {
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapPlantId": {
+          "type": "string"
+        },
+        "itemId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "mfrPartNumber": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "splitPercentage": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemAML": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "supplierItemId": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemAttribute": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "attributeType": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BomSplit": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "parentItemId": {
+          "type": "string"
+        },
+        "validFromDate": {
+          "type": "string"
+        },
+        "validToDate": {
+          "type": "string"
+        },
+        "splitPercentage": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapPlantId": {
+          "type": "string"
+        },
+        "itemText2": {
+          "type": "string"
+        },
+        "itemGroup": {
+          "type": "string"
+        },
+        "itemNodeNumber": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "lastModified": {
+          "type": "string"
+        }
+      }
+    },
+    "ItemPlant": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapPlantId": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemProgram": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "programId": {
+          "type": "string"
+        },
+        "programName": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Program": {
+      "type": "object",
+      "properties": {
+        "programId": {
+          "type": "string"
+        },
+        "programName": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "LeadTime": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "plantName": {
+          "type": "string"
+        },
+        "sapPlantId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "supplierName": {
+          "type": "string"
+        },
+        "estimatedLeadTime": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CustomFields": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "customFieldId": {
+          "type": "string"
+        },
+        "customFieldName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        },
+        "estimatedLeadTime": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ItemTags": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "tagName": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BomTags": {
+      "type": "object",
+      "properties": {
+        "bomNo": {
+          "type": "string"
+        },
+        "alternateBonNo": {
+          "type": "string"
+        },
+        "usage": {
+          "type": "string"
+        },
+        "lastModified": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BadRequest": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Bad Request",
+      "example": {
+        "status": "Bad Request",
+        "statusCode": 400,
+        "errorMessages": "Realm Id is missing"
+      }
+    },
+    "Unauthorized": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Unauthorized",
+      "example": {
+        "status": "Unauthorized",
+        "statusCode": 401,
+        "errorMessages": "Unauthorized Request"
+      }
+    },
+    "Forbidden": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Forbidden",
+      "example": {
+        "status": "Forbidden",
+        "statusCode": 403,
+        "errorMessages": "Forbidden"
+      }
+    },
+    "NotFound": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Not Found",
+      "example": {
+        "status": "Not Found",
+        "statusCode": 404,
+        "errorMessages": "The URL you requested does not exist"
+      }
+    },
+    "InternalServerError": {
+      "type": "object",
+      "properties": {
+        "errorMessages": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Internval Server Error",
+      "example": {
+        "status": "Internal Server Error",
+        "statusCode": 500,
+        "errorMessages": "Internal Server Error"
+      }
+    }
+  }
+}

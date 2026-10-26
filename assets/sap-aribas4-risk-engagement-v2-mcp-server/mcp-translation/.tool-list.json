@@ -1,0 +1,392 @@
+[
+  {
+    "name": "GET_engagements",
+    "title": "GET_engagements",
+    "description": "This API will fetch paginated details of engagements based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of engagements. API accepts query param  $skip to get the next page response.",
+    "openApiType": {
+      "path": "/engagements",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "This parameter specifies one of the realm names for which the client application is authenticated and provides access to the data in that realm. Try it out on Sandbox with: s4All-3",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "$count",
+          "description": "When value is true, total count of records will be returned.<br/><br/> Usage explained as below:<br/><br/> $count=true: returns total count of records after applying  the filters.<br/><br/> $count=false or no $count is passed: page meta data will not be  returned in the response.",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$top",
+          "description": "Value passed in this query parameter decides the page limit or page size of the current page returned.<br/><br/> Usage explained as below:<br/><br/> $top=10: returns first 10 records for that page from the offset ID and value has to be greater than 0 and lesser than or equal to system defined page limit. Here system defined page limit is 100.",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "offsetId/pageToken for pagination.<br/><br/> No offsetId/pageToken is required when the API is invoked for the  first time. Response header will contain X-Pagination-Token and  response body will contain pageToken if the records are not  exhausted. The pageToken returned for a page can be passed to the  $skip token to get the next page.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $skip=0 or not passing any query parameter are both  same. API will return page 1 records from start depending on the  $top query parameter value if present else the configured page  limit(100)<br/><br/> scenario 2 - $skip=10 - API skips first 10 records and retrieves the successive page records depending on the $top query parameter value if present else the configured page limit(100).",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$filter",
+          "description": "This request parameter takes updatedDateFrom and updatedDateTo parameters in yyyy-MM-ddTHH:mm:ssZ GMT time zone format and returns all records in the range depending on the configured page limit.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z and  updatedDateTo le 2019-10-04T12:20:51Z - retrieves all records that  fall between this range depending on the configured page limit<br/><br/> scenario 2 - $filter=updatedDateTo le 2019-10-04T12:20:51Z -  retrieves all records from start till the date specified above  depending on the configured page limit<br/><br/> scenario 3 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z -  API throws InvalidParameter Exception as updatedDateTo is a  mandatory parameter.",
+          "in": "query",
+          "newParameterName": "filter"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GET_engagements_workspaceId",
+    "title": "GET_engagements_workspaceId",
+    "description": "This API will fetch all engagement project details for a given project ID.",
+    "openApiType": {
+      "path": "/engagements/{workspaceId}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "Identify the requested realm.",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "workspaceId",
+          "description": "Identify the Vendor ID.",
+          "in": "path",
+          "newParameterName": "workspaceid"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GET_issues",
+    "title": "GET_issues",
+    "description": "This API will fetch paginated details of issues based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of issues. API accepts query param  $skip to get the next page response.",
+    "openApiType": {
+      "path": "/issues",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "Identify the requested realm.",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "$count",
+          "description": "When value is true, total count of records will be returned.<br/><br/> Usage explained as below:<br/><br/> $count=true: returns total count of records after applying  the filters.<br/><br/> $count=false or no $count is passed: page meta data will not be  returned in the response.",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$top",
+          "description": "Value passed in this query parameter decides the page limit or page size of the current page returned.<br/><br/> Usage explained as below:<br/><br/> $top=10: returns first 10 records for that page from the offset ID and value has to be greater than 0 and lesser than or equal to system defined page limit. Here system defined page limit is 100.",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "offsetId/pageToken for pagination.<br/><br/> No offsetId/pageToken is required when the API is invoked for the  first time. Response header will contain X-Pagination-Token and  response body will contain pageToken if the records are not  exhausted. The pageToken returned for a page can be passed to the  $skip token to get the next page.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $skip=0 or not passing any query parameter are both  same. API will return page 1 records from start depending on the  $top query parameter value if present else the configured page  limit(100)<br/><br/> scenario 2 - $skip=10 - API skips first 10 records and retrieves the successive page records depending on the $top query parameter value if present else the configured page limit(100).",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$filter",
+          "description": "This request parameter takes updatedDateFrom and updatedDateTo parameters in yyyy-MM-ddTHH:mm:ssZ GMT time zone format and returns all records in the range depending on the configured page limit.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z and  updatedDateTo le 2019-10-04T12:20:51Z - retrieves all records that  fall between this range depending on the configured page limit<br/><br/> scenario 2 - $filter=updatedDateTo le 2019-10-04T12:20:51Z -  retrieves all records from start till the date specified above  depending on the configured page limit<br/><br/> scenario 3 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z -  API throws InvalidParameter Exception as updatedDateTo is a  mandatory parameter.",
+          "in": "query",
+          "newParameterName": "filter"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GET_issues_workspaceId",
+    "title": "GET_issues_workspaceId",
+    "description": "This API will fetch all issue details for a given issue ID.",
+    "openApiType": {
+      "path": "/issues/{workspaceId}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "Identify the requested realm.",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "workspaceId",
+          "description": "Identify the Issue.",
+          "in": "path",
+          "newParameterName": "workspaceid"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GET_questionnaires",
+    "title": "GET_questionnaires",
+    "description": "This API will fetch paginated details of questionnaires based on the limit  configured in the system. Optionally you can pass in additional filter  parameters to get only a subset of Questionnaires. API accepts query param  $skip to get the next page response.",
+    "openApiType": {
+      "path": "/questionnaires",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "Identify the requested realm.",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "$count",
+          "description": "When value is true, total count of records will be returned.<br/><br/> Usage explained as below:<br/><br/> $count=true: returns total count of records after applying  the filters.<br/><br/> $count=false or no $count is passed: page meta data will not be  returned in the response.",
+          "in": "query",
+          "newParameterName": "count"
+        },
+        {
+          "name": "$top",
+          "description": "Value passed in this query parameter decides the page limit or page size of the current page returned.<br/><br/> Usage explained as below:<br/><br/> $top=10: returns first 10 records for that page from the offset ID and value has to be greater than 0 and lesser than or equal to system defined page limit. Here system defined page limit is 100.",
+          "in": "query",
+          "newParameterName": "top"
+        },
+        {
+          "name": "$skip",
+          "description": "offsetId/pageToken for pagination.<br/><br/> No offsetId/pageToken is required when the API is invoked for the  first time. Response header will contain X-Pagination-Token and  response body will contain pageToken if the records are not  exhausted. The pageToken returned for a page can be passed to the  $skip token to get the next page.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $skip=0 or not passing any query parameter are both  same. API will return page 1 records from start depending on the  $top query parameter value if present else the configured page  limit(100)<br/><br/> scenario 2 - $skip=10 - API skips first 10 records and retrieves the successive page records depending on the $top query parameter value if present else the configured page limit(100).",
+          "in": "query",
+          "newParameterName": "skip"
+        },
+        {
+          "name": "$filter",
+          "description": "This request parameter takes updatedDateFrom and updatedDateTo parameters in yyyy-MM-ddTHH:mm:ssZ GMT time zone format and returns all records in the range depending on the configured page limit.<br/><br/> Usage explained as below:<br/><br/> scenario 1 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z and  updatedDateTo le 2019-10-04T12:20:51Z - retrieves all records that  fall between this range depending on the configured page limit<br/><br/> scenario 2 - $filter=updatedDateTo le 2019-10-04T12:20:51Z -  retrieves all records from start till the date specified above  depending on the configured page limit<br/><br/> scenario 3 - $filter=updatedDateFrom ge 2018-09-29T12:20:51Z -  API throws InvalidParameter Exception as updatedDateTo is a  mandatory parameter.",
+          "in": "query",
+          "newParameterName": "filter"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GET_questionnaires_workspaceId",
+    "title": "GET_questionnaires_workspaceId",
+    "description": "This API will fetch all questionnaire details for a given workspace ID.",
+    "openApiType": {
+      "path": "/questionnaires/{workspaceId}",
+      "method": "get",
+      "parameters": [
+        {
+          "name": "realm",
+          "description": "Identify the requested realm.",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "workspaceId",
+          "description": "Identify the Questionnaire ID.",
+          "in": "path",
+          "newParameterName": "workspaceid"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  }
+]

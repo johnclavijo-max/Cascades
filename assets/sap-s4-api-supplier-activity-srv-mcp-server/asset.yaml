@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-supplier-activity-srv-mcp-server
+  description: Exposes SAP S/4HANA Supplier Activity read operations as MCP tools for querying open commitments and engagement status.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: API_SUPPLIER_ACTIVITY_SRV
+    kind: api
+    ordId: sap.s4:apiResource:API_SUPPLIER_ACTIVITY_SRV:v1
+
+provides:
+  apis:
+    - name: sap-s4-api-supplier-activity-srv-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-api-supplier-activity-srv-mcp-server:v1

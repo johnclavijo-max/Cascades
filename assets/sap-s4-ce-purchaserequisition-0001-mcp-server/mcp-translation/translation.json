@@ -1,0 +1,1580 @@
+{
+  "mcpTranslationVersion": "0.6",
+  "target": {
+    "ordId": "sap.s4:apiResource:CE_PURCHASEREQUISITION_0001:v1",
+    "type": "edmx"
+  },
+  "serverInfo": {
+    "name": "sap.mcp/sap_self",
+    "title": "sap_self",
+    "version": "1.0.0",
+    "description": "MCP server for the sap_self service."
+  },
+  "tools": [
+    {
+      "name": "get_metadata_sap_self",
+      "title": "get_metadata_sap_self",
+      "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+      "odataType": {
+        "metadataRequest": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch_for_sap_self",
+      "title": "batch_for_sap_self",
+      "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+      "odataType": {
+        "batchRequest": {},
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "retry-after"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_purchasereqn_for_sap_self",
+      "title": "list_PurchaseReqn_for_sap_self",
+      "description": "Retrieve a list of entities from the PurchaseReqn collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqn",
+          "crudOperation": "read",
+          "parameters": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "orderby"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "skip"
+            },
+            {
+              "name": "expand"
+            },
+            {
+              "name": "count"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "retry-after"
+          },
+          {
+            "name": "asyncresult"
+          },
+          {
+            "name": "odata-error"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create_purchasereqn_for_sap_self",
+      "title": "create_PurchaseReqn_for_sap_self",
+      "description": "Create a new instance of the PurchaseReqn EntitySet in the sap_self service. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqn",
+          "crudOperation": "create",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "PurchaseRequisitionType",
+              "newParameterName": "purchaserequisitiontype"
+            },
+            {
+              "name": "PurReqnDescription",
+              "newParameterName": "purreqndescription"
+            },
+            {
+              "name": "PurReqnHeaderNote",
+              "newParameterName": "purreqnheadernote"
+            },
+            {
+              "name": "SourceDetermination",
+              "newParameterName": "sourcedetermination"
+            },
+            {
+              "name": "PurReqnDoOnlyValidation",
+              "newParameterName": "purreqndoonlyvalidation"
+            },
+            {
+              "name": "SAP__Messages",
+              "newParameterName": "sap_messages"
+            },
+            {
+              "name": "_PurchaseRequisitionItem",
+              "newParameterName": "purchaserequisitionitem"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "location"
+          },
+          {
+            "name": "odata-entityid"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "update_purchasereqn_for_sap_self",
+      "title": "update_PurchaseReqn_for_sap_self",
+      "description": "Update an entity in PurchaseReqn EntitySet in the sap_self service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqn",
+          "crudOperation": "update",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "PurchaseRequisitionType",
+              "newParameterName": "purchaserequisitiontype"
+            },
+            {
+              "name": "PurReqnDescription",
+              "newParameterName": "purreqndescription"
+            },
+            {
+              "name": "PurReqnHeaderNote",
+              "newParameterName": "purreqnheadernote"
+            },
+            {
+              "name": "SourceDetermination",
+              "newParameterName": "sourcedetermination"
+            },
+            {
+              "name": "PurReqnDoOnlyValidation",
+              "newParameterName": "purreqndoonlyvalidation"
+            },
+            {
+              "name": "SAP__Messages",
+              "newParameterName": "sap_messages"
+            },
+            {
+              "name": "_PurchaseRequisitionItem",
+              "newParameterName": "purchaserequisitionitem"
+            },
+            {
+              "name": "if_match"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "get_purchasereqn_for_sap_self",
+      "title": "get_PurchaseReqn_for_sap_self",
+      "description": "Retrieve a single entity by its key from the PurchaseReqn collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqn",
+          "crudOperation": "readByKey",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "expand"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "retry-after"
+          },
+          {
+            "name": "asyncresult"
+          },
+          {
+            "name": "odata-error"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "count_purchasereqn_for_sap_self",
+      "title": "count_PurchaseReqn_for_sap_self",
+      "description": "Get the total count of entities in the PurchaseReqn collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqn",
+          "crudOperation": "count",
+          "parameters": [
+            {
+              "name": "filter"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_purchasereqnitem_for_sap_self",
+      "title": "list_PurchaseReqnItem_for_sap_self",
+      "description": "Retrieve a list of entities from the PurchaseReqnItem collection in the sap_self service. Supports OData query options for filtering, sorting, ranking ($top), skipping ($skip), expanding related entities, counting, selecting specific properties. Only use attributes in the query options that are specified in the metadata. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqnItem",
+          "crudOperation": "read",
+          "parameters": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "orderby"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "skip"
+            },
+            {
+              "name": "expand"
+            },
+            {
+              "name": "count"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "retry-after"
+          },
+          {
+            "name": "asyncresult"
+          },
+          {
+            "name": "odata-error"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "create_purchasereqnitem_for_sap_self",
+      "title": "create_PurchaseReqnItem_for_sap_self",
+      "description": "Create a new instance of the PurchaseReqnItem EntitySet in the sap_self service. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqnItem",
+          "crudOperation": "create",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "PurchaseRequisitionItem",
+              "newParameterName": "purchaserequisitionitem"
+            },
+            {
+              "name": "PurchasingDocument",
+              "newParameterName": "purchasingdocument"
+            },
+            {
+              "name": "PurchasingDocumentItem",
+              "newParameterName": "purchasingdocumentitem"
+            },
+            {
+              "name": "PurchasingDocumentSubtype",
+              "newParameterName": "purchasingdocumentsubtype"
+            },
+            {
+              "name": "PurchasingDocumentItemCategory",
+              "newParameterName": "purchasingdocumentitemcategory"
+            },
+            {
+              "name": "PurchaseRequisitionItemText",
+              "newParameterName": "purchaserequisitionitemtext"
+            },
+            {
+              "name": "AccountAssignmentCategory",
+              "newParameterName": "accountassignmentcategory"
+            },
+            {
+              "name": "Material",
+              "newParameterName": "material"
+            },
+            {
+              "name": "MaterialGroup",
+              "newParameterName": "materialgroup"
+            },
+            {
+              "name": "RequestedQuantity",
+              "newParameterName": "requestedquantity"
+            },
+            {
+              "name": "BaseUnit",
+              "newParameterName": "baseunit"
+            },
+            {
+              "name": "BaseUnitISOCode",
+              "newParameterName": "baseunitisocode"
+            },
+            {
+              "name": "PurchaseRequisitionPrice",
+              "newParameterName": "purchaserequisitionprice"
+            },
+            {
+              "name": "PurReqnPriceQuantity",
+              "newParameterName": "purreqnpricequantity"
+            },
+            {
+              "name": "MaterialGoodsReceiptDuration",
+              "newParameterName": "materialgoodsreceiptduration"
+            },
+            {
+              "name": "PurchasingOrganization",
+              "newParameterName": "purchasingorganization"
+            },
+            {
+              "name": "PurchasingGroup",
+              "newParameterName": "purchasinggroup"
+            },
+            {
+              "name": "Plant",
+              "newParameterName": "plant"
+            },
+            {
+              "name": "CompanyCode",
+              "newParameterName": "companycode"
+            },
+            {
+              "name": "SourceOfSupplyIsAssigned",
+              "newParameterName": "sourceofsupplyisassigned"
+            },
+            {
+              "name": "SupplyingPlant",
+              "newParameterName": "supplyingplant"
+            },
+            {
+              "name": "OrderedQuantity",
+              "newParameterName": "orderedquantity"
+            },
+            {
+              "name": "DeliveryDate",
+              "newParameterName": "deliverydate"
+            },
+            {
+              "name": "PurchaseRequisitionReleaseDate",
+              "newParameterName": "purchaserequisitionreleasedate"
+            },
+            {
+              "name": "ProcessingStatus",
+              "newParameterName": "processingstatus"
+            },
+            {
+              "name": "ExternalApprovalStatus",
+              "newParameterName": "externalapprovalstatus"
+            },
+            {
+              "name": "PurchasingInfoRecord",
+              "newParameterName": "purchasinginforecord"
+            },
+            {
+              "name": "Supplier",
+              "newParameterName": "supplier"
+            },
+            {
+              "name": "IsDeleted",
+              "newParameterName": "isdeleted"
+            },
+            {
+              "name": "FixedSupplier",
+              "newParameterName": "fixedsupplier"
+            },
+            {
+              "name": "RequisitionerName",
+              "newParameterName": "requisitionername"
+            },
+            {
+              "name": "PurReqCreationDate",
+              "newParameterName": "purreqcreationdate"
+            },
+            {
+              "name": "PurReqnItemCurrency",
+              "newParameterName": "purreqnitemcurrency"
+            },
+            {
+              "name": "MaterialPlannedDeliveryDurn",
+              "newParameterName": "materialplanneddeliverydurn"
+            },
+            {
+              "name": "DelivDateCategory",
+              "newParameterName": "delivdatecategory"
+            },
+            {
+              "name": "MultipleAcctAssgmtDistribution",
+              "newParameterName": "multipleacctassgmtdistribution"
+            },
+            {
+              "name": "StorageLocation",
+              "newParameterName": "storagelocation"
+            },
+            {
+              "name": "PurReqnSSPRequestor",
+              "newParameterName": "purreqnssprequestor"
+            },
+            {
+              "name": "PurReqnSSPAuthor",
+              "newParameterName": "purreqnsspauthor"
+            },
+            {
+              "name": "PurchaseContract",
+              "newParameterName": "purchasecontract"
+            },
+            {
+              "name": "PurReqnSourceOfSupplyType",
+              "newParameterName": "purreqnsourceofsupplytype"
+            },
+            {
+              "name": "PurchaseContractItem",
+              "newParameterName": "purchasecontractitem"
+            },
+            {
+              "name": "ConsumptionPosting",
+              "newParameterName": "consumptionposting"
+            },
+            {
+              "name": "PurReqnOrigin",
+              "newParameterName": "purreqnorigin"
+            },
+            {
+              "name": "PurReqnSSPCatalog",
+              "newParameterName": "purreqnsspcatalog"
+            },
+            {
+              "name": "PurReqnSSPCatalogItem",
+              "newParameterName": "purreqnsspcatalogitem"
+            },
+            {
+              "name": "PurReqnSSPCrossCatalogItem",
+              "newParameterName": "purreqnsspcrosscatalogitem"
+            },
+            {
+              "name": "PurReqnItemBlockingStatus",
+              "newParameterName": "purreqnitemblockingstatus"
+            },
+            {
+              "name": "PurReqnItemBlockingReasonText",
+              "newParameterName": "purreqnitemblockingreasontext"
+            },
+            {
+              "name": "Language",
+              "newParameterName": "language"
+            },
+            {
+              "name": "IsClosed",
+              "newParameterName": "isclosed"
+            },
+            {
+              "name": "ServicePerformer",
+              "newParameterName": "serviceperformer"
+            },
+            {
+              "name": "ProductTypeCode",
+              "newParameterName": "producttypecode"
+            },
+            {
+              "name": "PerformancePeriodStartDate",
+              "newParameterName": "performanceperiodstartdate"
+            },
+            {
+              "name": "PerformancePeriodEndDate",
+              "newParameterName": "performanceperiodenddate"
+            },
+            {
+              "name": "PurchaseOrderPriceType",
+              "newParameterName": "purchaseorderpricetype"
+            },
+            {
+              "name": "SupplierMaterialNumber",
+              "newParameterName": "suppliermaterialnumber"
+            },
+            {
+              "name": "Batch",
+              "newParameterName": "batch"
+            },
+            {
+              "name": "MaterialRevisionLevel",
+              "newParameterName": "materialrevisionlevel"
+            },
+            {
+              "name": "MinRemainingShelfLife",
+              "newParameterName": "minremainingshelflife"
+            },
+            {
+              "name": "ItemNetAmount",
+              "newParameterName": "itemnetamount"
+            },
+            {
+              "name": "TaxCode",
+              "newParameterName": "taxcode"
+            },
+            {
+              "name": "GoodsReceiptIsExpected",
+              "newParameterName": "goodsreceiptisexpected"
+            },
+            {
+              "name": "InvoiceIsExpected",
+              "newParameterName": "invoiceisexpected"
+            },
+            {
+              "name": "GoodsReceiptIsNonValuated",
+              "newParameterName": "goodsreceiptisnonvaluated"
+            },
+            {
+              "name": "RequirementTracking",
+              "newParameterName": "requirementtracking"
+            },
+            {
+              "name": "MRPController",
+              "newParameterName": "mrpcontroller"
+            },
+            {
+              "name": "PurchaseRequisitionIsFixed",
+              "newParameterName": "purchaserequisitionisfixed"
+            },
+            {
+              "name": "ItemDeliveryAddressID",
+              "newParameterName": "itemdeliveryaddressid"
+            },
+            {
+              "name": "PurReqnReceivingCustomer",
+              "newParameterName": "purreqnreceivingcustomer"
+            },
+            {
+              "name": "Subcontractor",
+              "newParameterName": "subcontractor"
+            },
+            {
+              "name": "ExpectedOverallLimitAmount",
+              "newParameterName": "expectedoveralllimitamount"
+            },
+            {
+              "name": "OverallLimitAmount",
+              "newParameterName": "overalllimitamount"
+            },
+            {
+              "name": "PurContractForOverallLimit",
+              "newParameterName": "purcontractforoveralllimit"
+            },
+            {
+              "name": "PurContractItemForOverallLimit",
+              "newParameterName": "purcontractitemforoveralllimit"
+            },
+            {
+              "name": "PurReqnExternalReference",
+              "newParameterName": "purreqnexternalreference"
+            },
+            {
+              "name": "PurReqnItemExternalReference",
+              "newParameterName": "purreqnitemexternalreference"
+            },
+            {
+              "name": "PurReqnExternalSystemId",
+              "newParameterName": "purreqnexternalsystemid"
+            },
+            {
+              "name": "ProcurementHubSourceSystem",
+              "newParameterName": "procurementhubsourcesystem"
+            },
+            {
+              "name": "SSPAuthorExternalBPIdnNumber",
+              "newParameterName": "sspauthorexternalbpidnnumber"
+            },
+            {
+              "name": "SSPReqrUserId",
+              "newParameterName": "sspreqruserid"
+            },
+            {
+              "name": "SAP__Messages",
+              "newParameterName": "sap_messages"
+            },
+            {
+              "name": "_PurchaseReqnAcctAssgmt",
+              "newParameterName": "purchasereqnacctassgmt"
+            },
+            {
+              "name": "_PurchaseReqnDelivAddress",
+              "newParameterName": "purchasereqndelivaddress"
+            },
+            {
+              "name": "_PurchaseReqnItemText",
+              "newParameterName": "purchasereqnitemtext"
+            },
+            {
+              "name": "_PurReqn",
+              "newParameterName": "purreqn"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "location"
+          },
+          {
+            "name": "odata-entityid"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "update_purchasereqnitem_for_sap_self",
+      "title": "update_PurchaseReqnItem_for_sap_self",
+      "description": "Update an entity in PurchaseReqnItem EntitySet in the sap_self service. Provide the key properties to identify the entity and the properties to update in the request body. If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqnItem",
+          "crudOperation": "update",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "PurchaseRequisitionItem",
+              "newParameterName": "purchaserequisitionitem"
+            },
+            {
+              "name": "PurchasingDocument",
+              "newParameterName": "purchasingdocument"
+            },
+            {
+              "name": "PurchasingDocumentItem",
+              "newParameterName": "purchasingdocumentitem"
+            },
+            {
+              "name": "PurchasingDocumentSubtype",
+              "newParameterName": "purchasingdocumentsubtype"
+            },
+            {
+              "name": "PurchasingDocumentItemCategory",
+              "newParameterName": "purchasingdocumentitemcategory"
+            },
+            {
+              "name": "PurchaseRequisitionItemText",
+              "newParameterName": "purchaserequisitionitemtext"
+            },
+            {
+              "name": "AccountAssignmentCategory",
+              "newParameterName": "accountassignmentcategory"
+            },
+            {
+              "name": "Material",
+              "newParameterName": "material"
+            },
+            {
+              "name": "MaterialGroup",
+              "newParameterName": "materialgroup"
+            },
+            {
+              "name": "RequestedQuantity",
+              "newParameterName": "requestedquantity"
+            },
+            {
+              "name": "BaseUnit",
+              "newParameterName": "baseunit"
+            },
+            {
+              "name": "BaseUnitISOCode",
+              "newParameterName": "baseunitisocode"
+            },
+            {
+              "name": "PurchaseRequisitionPrice",
+              "newParameterName": "purchaserequisitionprice"
+            },
+            {
+              "name": "PurReqnPriceQuantity",
+              "newParameterName": "purreqnpricequantity"
+            },
+            {
+              "name": "MaterialGoodsReceiptDuration",
+              "newParameterName": "materialgoodsreceiptduration"
+            },
+            {
+              "name": "PurchasingOrganization",
+              "newParameterName": "purchasingorganization"
+            },
+            {
+              "name": "PurchasingGroup",
+              "newParameterName": "purchasinggroup"
+            },
+            {
+              "name": "Plant",
+              "newParameterName": "plant"
+            },
+            {
+              "name": "CompanyCode",
+              "newParameterName": "companycode"
+            },
+            {
+              "name": "SourceOfSupplyIsAssigned",
+              "newParameterName": "sourceofsupplyisassigned"
+            },
+            {
+              "name": "SupplyingPlant",
+              "newParameterName": "supplyingplant"
+            },
+            {
+              "name": "OrderedQuantity",
+              "newParameterName": "orderedquantity"
+            },
+            {
+              "name": "DeliveryDate",
+              "newParameterName": "deliverydate"
+            },
+            {
+              "name": "PurchaseRequisitionReleaseDate",
+              "newParameterName": "purchaserequisitionreleasedate"
+            },
+            {
+              "name": "ProcessingStatus",
+              "newParameterName": "processingstatus"
+            },
+            {
+              "name": "PurchasingInfoRecord",
+              "newParameterName": "purchasinginforecord"
+            },
+            {
+              "name": "Supplier",
+              "newParameterName": "supplier"
+            },
+            {
+              "name": "IsDeleted",
+              "newParameterName": "isdeleted"
+            },
+            {
+              "name": "FixedSupplier",
+              "newParameterName": "fixedsupplier"
+            },
+            {
+              "name": "RequisitionerName",
+              "newParameterName": "requisitionername"
+            },
+            {
+              "name": "PurReqCreationDate",
+              "newParameterName": "purreqcreationdate"
+            },
+            {
+              "name": "PurReqnItemCurrency",
+              "newParameterName": "purreqnitemcurrency"
+            },
+            {
+              "name": "MaterialPlannedDeliveryDurn",
+              "newParameterName": "materialplanneddeliverydurn"
+            },
+            {
+              "name": "DelivDateCategory",
+              "newParameterName": "delivdatecategory"
+            },
+            {
+              "name": "MultipleAcctAssgmtDistribution",
+              "newParameterName": "multipleacctassgmtdistribution"
+            },
+            {
+              "name": "StorageLocation",
+              "newParameterName": "storagelocation"
+            },
+            {
+              "name": "PurReqnSSPRequestor",
+              "newParameterName": "purreqnssprequestor"
+            },
+            {
+              "name": "PurReqnSSPAuthor",
+              "newParameterName": "purreqnsspauthor"
+            },
+            {
+              "name": "PurchaseContract",
+              "newParameterName": "purchasecontract"
+            },
+            {
+              "name": "PurReqnSourceOfSupplyType",
+              "newParameterName": "purreqnsourceofsupplytype"
+            },
+            {
+              "name": "PurchaseContractItem",
+              "newParameterName": "purchasecontractitem"
+            },
+            {
+              "name": "ConsumptionPosting",
+              "newParameterName": "consumptionposting"
+            },
+            {
+              "name": "PurReqnOrigin",
+              "newParameterName": "purreqnorigin"
+            },
+            {
+              "name": "PurReqnSSPCatalog",
+              "newParameterName": "purreqnsspcatalog"
+            },
+            {
+              "name": "PurReqnSSPCatalogItem",
+              "newParameterName": "purreqnsspcatalogitem"
+            },
+            {
+              "name": "PurReqnSSPCrossCatalogItem",
+              "newParameterName": "purreqnsspcrosscatalogitem"
+            },
+            {
+              "name": "PurReqnItemBlockingStatus",
+              "newParameterName": "purreqnitemblockingstatus"
+            },
+            {
+              "name": "PurReqnItemBlockingReasonText",
+              "newParameterName": "purreqnitemblockingreasontext"
+            },
+            {
+              "name": "Language",
+              "newParameterName": "language"
+            },
+            {
+              "name": "IsClosed",
+              "newParameterName": "isclosed"
+            },
+            {
+              "name": "ServicePerformer",
+              "newParameterName": "serviceperformer"
+            },
+            {
+              "name": "ProductTypeCode",
+              "newParameterName": "producttypecode"
+            },
+            {
+              "name": "PerformancePeriodStartDate",
+              "newParameterName": "performanceperiodstartdate"
+            },
+            {
+              "name": "PerformancePeriodEndDate",
+              "newParameterName": "performanceperiodenddate"
+            },
+            {
+              "name": "PurchaseOrderPriceType",
+              "newParameterName": "purchaseorderpricetype"
+            },
+            {
+              "name": "SupplierMaterialNumber",
+              "newParameterName": "suppliermaterialnumber"
+            },
+            {
+              "name": "Batch",
+              "newParameterName": "batch"
+            },
+            {
+              "name": "MaterialRevisionLevel",
+              "newParameterName": "materialrevisionlevel"
+            },
+            {
+              "name": "MinRemainingShelfLife",
+              "newParameterName": "minremainingshelflife"
+            },
+            {
+              "name": "ItemNetAmount",
+              "newParameterName": "itemnetamount"
+            },
+            {
+              "name": "TaxCode",
+              "newParameterName": "taxcode"
+            },
+            {
+              "name": "GoodsReceiptIsExpected",
+              "newParameterName": "goodsreceiptisexpected"
+            },
+            {
+              "name": "InvoiceIsExpected",
+              "newParameterName": "invoiceisexpected"
+            },
+            {
+              "name": "GoodsReceiptIsNonValuated",
+              "newParameterName": "goodsreceiptisnonvaluated"
+            },
+            {
+              "name": "RequirementTracking",
+              "newParameterName": "requirementtracking"
+            },
+            {
+              "name": "MRPController",
+              "newParameterName": "mrpcontroller"
+            },
+            {
+              "name": "PurchaseRequisitionIsFixed",
+              "newParameterName": "purchaserequisitionisfixed"
+            },
+            {
+              "name": "ItemDeliveryAddressID",
+              "newParameterName": "itemdeliveryaddressid"
+            },
+            {
+              "name": "PurReqnReceivingCustomer",
+              "newParameterName": "purreqnreceivingcustomer"
+            },
+            {
+              "name": "Subcontractor",
+              "newParameterName": "subcontractor"
+            },
+            {
+              "name": "ExpectedOverallLimitAmount",
+              "newParameterName": "expectedoveralllimitamount"
+            },
+            {
+              "name": "OverallLimitAmount",
+              "newParameterName": "overalllimitamount"
+            },
+            {
+              "name": "PurContractForOverallLimit",
+              "newParameterName": "purcontractforoveralllimit"
+            },
+            {
+              "name": "PurContractItemForOverallLimit",
+              "newParameterName": "purcontractitemforoveralllimit"
+            },
+            {
+              "name": "PurReqnExternalReference",
+              "newParameterName": "purreqnexternalreference"
+            },
+            {
+              "name": "PurReqnItemExternalReference",
+              "newParameterName": "purreqnitemexternalreference"
+            },
+            {
+              "name": "PurReqnExternalSystemId",
+              "newParameterName": "purreqnexternalsystemid"
+            },
+            {
+              "name": "ProcurementHubSourceSystem",
+              "newParameterName": "procurementhubsourcesystem"
+            },
+            {
+              "name": "SSPAuthorExternalBPIdnNumber",
+              "newParameterName": "sspauthorexternalbpidnnumber"
+            },
+            {
+              "name": "SSPReqrUserId",
+              "newParameterName": "sspreqruserid"
+            },
+            {
+              "name": "SAP__Messages",
+              "newParameterName": "sap_messages"
+            },
+            {
+              "name": "_PurchaseReqnAcctAssgmt",
+              "newParameterName": "purchasereqnacctassgmt"
+            },
+            {
+              "name": "_PurchaseReqnDelivAddress",
+              "newParameterName": "purchasereqndelivaddress"
+            },
+            {
+              "name": "_PurchaseReqnItemText",
+              "newParameterName": "purchasereqnitemtext"
+            },
+            {
+              "name": "_PurReqn",
+              "newParameterName": "purreqn"
+            },
+            {
+              "name": "if_match"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "get_purchasereqnitem_for_sap_self",
+      "title": "get_PurchaseReqnItem_for_sap_self",
+      "description": "Retrieve a single entity by its key from the PurchaseReqnItem collection in the sap_self service. Provide the key property value(s) to identify the specific entity to retrieve. Supports OData query options for selecting specific properties ($select), expanding related entities ($expand). If the structure of the entity is not known, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqnItem",
+          "crudOperation": "readByKey",
+          "parameters": [
+            {
+              "name": "PurchaseRequisition",
+              "newParameterName": "purchaserequisition"
+            },
+            {
+              "name": "PurchaseRequisitionItem",
+              "newParameterName": "purchaserequisitionitem"
+            },
+            {
+              "name": "select"
+            },
+            {
+              "name": "expand"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "etag"
+          },
+          {
+            "name": "preference-applied"
+          },
+          {
+            "name": "vary"
+          },
+          {
+            "name": "retry-after"
+          },
+          {
+            "name": "asyncresult"
+          },
+          {
+            "name": "odata-error"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    },
+    {
+      "name": "count_purchasereqnitem_for_sap_self",
+      "title": "count_PurchaseReqnItem_for_sap_self",
+      "description": "Get the total count of entities in the PurchaseReqnItem collection in the sap_self service. Supports OData $filter to count only entities matching specific criteria. Use this when you need to determine the total number of entities without retrieving the actual data. If you need to understand the available filter properties, call get_metadata_sap_self tool first to get the metadata.",
+      "odataType": {
+        "entitySet": {
+          "name": "PurchaseReqnItem",
+          "crudOperation": "count",
+          "parameters": [
+            {
+              "name": "filter"
+            }
+          ]
+        },
+        "responseHeaders": [
+          {
+            "name": "age"
+          },
+          {
+            "name": "cache-control"
+          },
+          {
+            "name": "expires"
+          },
+          {
+            "name": "last-modified"
+          },
+          {
+            "name": "x-request-id"
+          },
+          {
+            "name": "x-correlation-id"
+          },
+          {
+            "name": "content-type"
+          },
+          {
+            "name": "content-encoding"
+          },
+          {
+            "name": "content-language"
+          },
+          {
+            "name": "content-length"
+          },
+          {
+            "name": "odata-version"
+          },
+          {
+            "name": "sap-messages"
+          }
+        ]
+      }
+    }
+  ]
+}

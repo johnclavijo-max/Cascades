@@ -1,0 +1,647 @@
+{
+  "swagger": "2.0",
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "To use this API, you need to obtain the OAuth client credentials (client ID and secret) from SAP Ariba. After that, pass these client credentials to the SAP Ariba API token endpoint to obtain an access token.",
+      "tokenUrl": "https://{regionOauth}/oauth/token",
+      "flow": "application",
+      "scopes": {}
+    }
+  },
+  "externalDocs": {
+    "description": "More information is available at https://developer.ariba.com/api where you can select your region's datacenter.",
+    "url": "https://developer.ariba.com/api"
+  },
+  "info": {
+    "version": "2.0.0",
+    "title": "Risk Exposure API",
+    "description": "Get the overall and category risk exposure for your suppliers, so you can integrate it into other SAP Ariba applications. The API gets the result of the overall risk exposure and risk category exposure for the suppliers monitored in SAP Ariba Supplier Risk."
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-shortText": "Get the overall and category risk exposure for your suppliers.",
+  "host": "sandbox.api.sap.com",
+  "basePath": "/ariba/api/risk-exposure/v2/sandbox",
+  "schemes": [
+    "https"
+  ],
+  "x-sap-ext-overview": [
+    {
+      "name": "API Group",
+      "values": [
+        "Supplier Management"
+      ]
+    },
+    {
+      "name": "API System Role",
+      "values": [
+        "SAP Ariba Sourcing"
+      ]
+    },
+    {
+      "name": "Datacenters",
+      "values": [
+        "US",
+        "EU",
+        "RU",
+        "UAE",
+        "KSA",
+        "CN",
+        "AU",
+        "JP",
+        "IN"
+      ]
+    }
+  ],
+  "x-servers": [
+    {
+      "url": "https://{region}/api/risk-exposure/v2/{environment}",
+      "description": "Risk Exposure API endpoint",
+      "templates": {
+        "region": {
+          "enum": [
+            "openapi.ariba.com",
+            "eu.openapi.ariba.com",
+            "ru.openapi.ariba.com",
+            "mn1.openapi.ariba.com",
+            "mn2.openapi.ariba.com",
+            "openapi.sapariba.cn",
+            "openapi.au.cloud.ariba.com",
+            "openapi.jp.cloud.ariba.com",
+            "openapi.in.cloud.ariba.com"
+          ],
+          "default": "openapi.ariba.com",
+          "description": "The SAP Ariba region where the SAP Ariba APIs are used."
+        },
+        "regionOauth": {
+          "enum": [
+            "api.ariba.com",
+            "api-eu.ariba.com",
+            "api-ru.ariba.com",
+            "api.mn1.ariba.com",
+            "api.mn2.ariba.com",
+            "api.sapariba.cn",
+            "api.au.cloud.ariba.com",
+            "api.jp.cloud.ariba.com",
+            "api.in.cloud.ariba.com"
+          ],
+          "default": "api.ariba.com",
+          "description": "The SAP Ariba regional OAuth server associated with the region where the SAP Ariba APIs are used."
+        },
+        "environment": {
+          "enum": [
+            "sandbox",
+            "prod"
+          ],
+          "default": "sandbox",
+          "description": "Public URI Prefix for different environments, prod is Test or Production environment for Cloud Business Applications and sandbox is Mock environment with sample data. For more information, go to the SAP Ariba Developer Portal at https://developer.ariba.com."
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "risk-exposure",
+      "description": "Risk Exposure API"
+    },
+    {
+      "name": "Risk Exposure API",
+      "description": "Can be used across SAP Ariba applications to share the overall and category risk exposure of suppliers monitored in SAP Ariba Supplier Risk."
+    }
+  ],
+  "paths": {
+    "/suppliers/{smVendorId}/exposures": {
+      "get": {
+        "tags": [
+          "Risk Exposure API"
+        ],
+        "summary": "Retrieve overall and category risk exposure for a single supplier.",
+        "description": "This API fetches the overall and category risk exposure for the given smVendorId. The API accepts the query parameter realm to get the supplier details for the specified realm.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "type": "string",
+            "required": false,
+            "in": "header",
+            "description": "If specified, this Locale will be used for translation."
+          },
+          {
+            "name": "realm",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "This parameter specifies one of the realm names for which the client application is authenticated and provides access to the data in that realm. Try it out on Sandbox with: s4All-3"
+          },
+          {
+            "name": "smVendorId",
+            "type": "string",
+            "required": true,
+            "in": "path",
+            "description": "The supplier you are retrieving risk exposure for."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ExposureModel"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/InvalidInputParameter"
+          },
+          "500": {
+            "$ref": "#/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/suppliers/exposureRequest/pages/{pageNo}": {
+      "post": {
+        "tags": [
+          "Risk Exposure API"
+        ],
+        "summary": "Retrieve overall and category risk exposure for multiple suppliers",
+        "description": "This API fetches the overall and category risk exposure for the given list of smVendorIds or ERPVendorIDs. The API accepts the query parameter realm to get the supplier details for the specified realm.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept-Language",
+            "type": "string",
+            "required": false,
+            "in": "header",
+            "description": "If specified, this Locale will be used for translation."
+          },
+          {
+            "name": "realm",
+            "type": "string",
+            "required": true,
+            "in": "query",
+            "description": "This parameter specifies one of the realm names for which the client application is authenticated and provides access to the data in that realm. Try it out on Sandbox with: s4All-3"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReportRequest"
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "path",
+            "description": "pageNo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxPageSize",
+            "in": "header",
+            "description": "Number of suppliers per page",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ExposureModelArray"
+            },
+            "headers": {
+              "Link": {
+                "type": "string",
+                "description": "Links to the previous or next page where applicable."
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/InvalidInputParameter"
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ReportRequest": {
+      "properties": {
+        "smVendorIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "S123456",
+            "S234567"
+          ]
+        },
+        "erpVendorIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "ABC123",
+            "EFG456"
+          ]
+        },
+        "sourceSystem": {
+          "type": "string",
+          "example": "SAP"
+        }
+      }
+    },
+    "ExposureModel": {
+      "type": "object",
+      "properties": {
+        "realm": {
+          "type": "string",
+          "example": "StratusLabs"
+        },
+        "smVendorId": {
+          "type": "string",
+          "example": "S20675459"
+        },
+        "erpVendorId": {
+          "type": "string",
+          "example": "demo-42820"
+        },
+        "sourceSystem": {
+          "type": "string",
+          "example": "SAP"
+        },
+        "exposureId": {
+          "type": "integer",
+          "format": "int64",
+          "example": 12345
+        },
+        "exposureCalculationDate": {
+          "type": "string",
+          "example": "2022-11-21"
+        },
+        "exposure": {
+          "type": "integer",
+          "format": "int32",
+          "example": 60
+        },
+        "exposureLevel": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3
+        },
+        "exposureLevelName": {
+          "type": "string",
+          "example": "MEDIUM"
+        },
+        "localizedExposureLevelName": {
+          "type": "string",
+          "example": "Medium"
+        },
+        "riskCategoryExposures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "FINANCIAL"
+              },
+              "localizedName": {
+                "type": "string",
+                "example": "Financial"
+              },
+              "weight": {
+                "type": "integer",
+                "format": "int32",
+                "example": 25
+              },
+              "exposure": {
+                "type": "integer",
+                "format": "int32",
+                "example": 30
+              },
+              "exposureLevel": {
+                "type": "integer",
+                "format": "int32",
+                "example": 3
+              },
+              "exposureLevelName": {
+                "type": "string",
+                "example": "MEDIUM"
+              },
+              "localizedExposureLevelName": {
+                "type": "string",
+                "example": "Medium"
+              }
+            }
+          }
+        },
+        "responseTimeStamp": {
+          "type": "string",
+          "example": "2022-11-21"
+        },
+        "exposureConfigurationVersion": {
+          "type": "string",
+          "example": "33.1"
+        }
+      }
+    },
+    "ExposureModelArray": {
+      "type": "object",
+      "properties": {
+        "suppliers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "realm": {
+                "type": "string",
+                "example": "StratusLabs"
+              },
+              "smVendorId": {
+                "type": "string",
+                "example": "S20675459"
+              },
+              "erpVendorId": {
+                "type": "string",
+                "example": "demo-42820"
+              },
+              "sourceSystem": {
+                "type": "string",
+                "example": "SAP"
+              },
+              "exposureId": {
+                "type": "integer",
+                "format": "int64",
+                "example": 12345
+              },
+              "exposureCalculationDate": {
+                "type": "string",
+                "example": "2022-11-21"
+              },
+              "exposure": {
+                "type": "integer",
+                "format": "int32",
+                "example": 60
+              },
+              "exposureLevel": {
+                "type": "integer",
+                "format": "int32",
+                "example": 3
+              },
+              "exposureLevelName": {
+                "type": "string",
+                "example": "MEDIUM"
+              },
+              "localizedExposureLevelName": {
+                "type": "string",
+                "example": "Medium"
+              },
+              "riskCategoryExposures": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "FINANCIAL"
+                    },
+                    "localizedName": {
+                      "type": "string",
+                      "example": "Financial"
+                    },
+                    "weight": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 25
+                    },
+                    "exposure": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 30
+                    },
+                    "exposureLevel": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 3
+                    },
+                    "exposureLevelName": {
+                      "type": "string",
+                      "example": "MEDIUM"
+                    },
+                    "localizedExposureLevelName": {
+                      "type": "string",
+                      "example": "Medium"
+                    }
+                  }
+                }
+              },
+              "responseTimeStamp": {
+                "type": "string",
+                "example": "2022-11-21"
+              },
+              "exposureConfigurationVersion": {
+                "type": "string",
+                "example": "33.1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "RiskExposureCategoryModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "FINANCIAL"
+        },
+        "localizedName": {
+          "type": "string",
+          "example": "Financial"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32",
+          "example": 25
+        },
+        "exposure": {
+          "type": "integer",
+          "format": "int32",
+          "example": 30
+        },
+        "exposureLevel": {
+          "type": "integer",
+          "format": "int32",
+          "example": 3
+        },
+        "exposureLevelName": {
+          "type": "string",
+          "example": "MEDIUM"
+        },
+        "localizedExposureLevelName": {
+          "type": "string",
+          "example": "Medium"
+        }
+      }
+    },
+    "ErrorInternal": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "Internal Server Error"
+        },
+        "message": {
+          "type": "string",
+          "example": "Error retrieving exposure data"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "ErrorBadRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "Invalid input parameter"
+        },
+        "message": {
+          "type": "string",
+          "example": [
+            "Invalid or missing request parameters: sm_vendor_id or realm",
+            "Realm YYY in the request does not match with realms in the token.",
+            "Realm YYY in the request does not match with realms in your system.",
+            "Check the realm in the request. The realm value should not be null or empty.",
+            "The apiKey is missing in the header.",
+            "The apiKey provided in the header does not match with the apiKey in the token."
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "Error500": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorInternal"
+        }
+      }
+    },
+    "Error400": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorBadRequest"
+        }
+      }
+    },
+    "Error401": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorUnauthorized"
+        }
+      }
+    },
+    "Error403": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "#/definitions/ErrorForbidden"
+        }
+      }
+    },
+    "ErrorForbidden": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "Forbidden"
+        },
+        "message": {
+          "type": "string",
+          "example": "Forbidden"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "ErrorUnauthorized": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "Unauthorized"
+        },
+        "message": {
+          "type": "string",
+          "example": "Unauthorized Request or Invalid/Missing realm parameter. Usage:?realm="
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    }
+  },
+  "responses": {
+    "InternalServerError": {
+      "description": "ARIBA site is temporarily down.",
+      "schema": {
+        "$ref": "#/definitions/Error500"
+      }
+    },
+    "InvalidInputParameter": {
+      "description": "If your URL is not constructed properly, you have trailing spaces in URl, request body format is wrong etc.",
+      "schema": {
+        "$ref": "#/definitions/Error400"
+      }
+    },
+    "Unauthorized": {
+      "description": "Unauthorized Request or Invalid/Missing realm parameter.",
+      "schema": {
+        "$ref": "#/definitions/Error401"
+      }
+    },
+    "Forbidden": {
+      "description": "Forbidden.",
+      "schema": {
+        "$ref": "#/definitions/Error403"
+      }
+    }
+  }
+}

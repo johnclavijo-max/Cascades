@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-ce-purchaseorder-0001-mcp-server
+  description: Exposes SAP S/4HANA Cloud Purchase Order read operations as MCP tools for disruption scope detection and tariff classification queries.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: CE_PURCHASEORDER_0001
+    kind: api
+    ordId: sap.s4:apiResource:CE_PURCHASEORDER_0001:v1
+
+provides:
+  apis:
+    - name: sap-s4-ce-purchaseorder-0001-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-ce-purchaseorder-0001-mcp-server:v1

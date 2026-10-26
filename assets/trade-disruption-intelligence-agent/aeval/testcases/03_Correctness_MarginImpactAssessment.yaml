@@ -1,0 +1,35 @@
+id: 03_Correctness_MarginImpactAssessment
+description: >
+  Happy path for UJ-02 — planner requests a landed cost delta and margin exposure assessment
+  for affected orders after a disruption scope query. Agent retrieves cost breakdown and pricing
+  data from Ariba and returns per-order landed cost delta with explicit data gap flags (M2 achieved).
+tags:
+  - correctness
+  - impact_assessment
+test_steps:
+  - type: dynamic_conversation
+    user_agent:
+      task_summary: |
+        You are a supply chain planner. You have already identified that open purchase orders
+        for electronics components from Southeast Asia are affected by a 15% tariff increase.
+        You now want a landed cost and margin impact assessment across those orders.
+        Known information: the tariff rate increase is 15 percentage points; affected orders
+        are electronics components imported from Southeast Asia.
+        Unknown information: the current baseline costs and the exact margin exposure — the agent
+        must retrieve these from Ariba.
+        If the agent asks which orders to assess, say you want all open import POs for electronics
+        from Southeast Asia.
+        If the agent flags that some orders have missing cost data, acknowledge and ask it to
+        flag those orders separately and proceed with the ones that have data.
+    max_turns: 6
+    agent_response_validations:
+      - check: 'The response contains a landed cost delta calculation per order or as an aggregate across affected orders, grounded in cost breakdown and pricing data retrieved during this conversation.'
+      - check: 'The response identifies which orders have complete cost data and explicitly flags any orders where cost or pricing data was unavailable, rather than silently omitting them.'
+      - check: 'Every cost figure or margin value stated in the response traces to tool output retrieved in this conversation — no amount is stated that the agent did not retrieve.'
+    rule_compliance_validations:
+      - check: 'WHEN cost or pricing data is incomplete for one or more affected orders, the agent explicitly flags those orders and states the gap, rather than presenting the assessment as complete.'
+    tool_validations:
+      expected_tool_calls:
+        - tool: extractCostGroupDataForExternalAppsUsingGET
+          output:
+            check: 'The tool returns a non-error response carrying cost component data with an id and status field at minimum, or a cost breakdown for the requested document.'

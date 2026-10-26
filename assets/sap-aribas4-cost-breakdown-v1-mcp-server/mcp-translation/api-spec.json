@@ -1,0 +1,397 @@
+{
+  "swagger": "2.0",
+  "security": [
+    {
+      "OAuth2": []
+    }
+  ],
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "description": "To use this API, you need to obtain the OAuth client credentials (client ID and secret) from SAP Ariba. After that, pass these client credentials to the SAP Ariba API token endpoint to obtain an access token.",
+      "tokenUrl": "https://{regionOauth}/oauth/token",
+      "flow": "application",
+      "scopes": {}
+    }
+  },
+  "externalDocs": {
+    "description": "More information is available at https://developer.ariba.com/api where you can select your region's datacenter.",
+    "url": "https://developer.ariba.com/api"
+  },
+  "info": {
+    "version": "1.0.0",
+    "title": "Cost Breakdown Data Extraction API",
+    "description": "The cost breakdown data extraction API enables you to search for cost group documents associated with line items for which awards or PIRs are created and to view cost terms for a cost group document."
+  },
+  "x-sap-stateInfo": {
+    "state": "Active"
+  },
+  "x-sap-shortText": "Retrieve cost group documents IDs, cost components, and cost group terms.",
+  "host": "sandbox.api.sap.com",
+  "basePath": "/ariba/api/cost-breakdown/v1/sandbox",
+  "schemes": [
+    "https"
+  ],
+  "x-sap-ext-overview": [
+    {
+      "name": "API Group",
+      "values": [
+        "Strategic Sourcing"
+      ]
+    },
+    {
+      "name": "API System Role",
+      "values": [
+        "SAP Ariba Sourcing"
+      ]
+    },
+    {
+      "name": "Datacenters",
+      "values": [
+        "US",
+        "EU",
+        "RU",
+        "UAE",
+        "KSA",
+        "CN",
+        "AU",
+        "JP"
+      ]
+    }
+  ],
+  "x-servers": [
+    {
+      "url": "https://{region}/api/cost-breakdown/v1/{environment}",
+      "description": "Cost breakdown data extraction API endpoint",
+      "templates": {
+        "region": {
+          "enum": [
+            "openapi.ariba.com",
+            "eu.openapi.ariba.com",
+            "ru.openapi.ariba.com",
+            "mn1.openapi.ariba.com",
+            "mn2.openapi.ariba.com",
+            "openapi.sapariba.cn",
+            "openapi.au.cloud.ariba.com",
+            "openapi.jp.cloud.ariba.com"
+          ],
+          "default": "openapi.ariba.com",
+          "description": "The SAP Ariba region where the SAP Ariba APIs are used."
+        },
+        "regionOauth": {
+          "enum": [
+            "api.ariba.com",
+            "api-eu.ariba.com",
+            "api-ru.ariba.com",
+            "api.mn1.ariba.com",
+            "api.mn2.ariba.com",
+            "api.sapariba.cn",
+            "api.au.cloud.ariba.com",
+            "api.jp.cloud.ariba.com"
+          ],
+          "default": "api.ariba.com",
+          "description": "The SAP Ariba regional OAuth server associated with the region where the SAP Ariba APIs are used."
+        },
+        "environment": {
+          "enum": [
+            "sandbox",
+            "prod"
+          ],
+          "default": "sandbox",
+          "description": "Public URI Prefix for different environments, prod is Test or Production environment for Cloud Business Applications and sandbox is Mock environment with sample data. For more information, go to the SAP Ariba Developer Portal at https://developer.ariba.com."
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "cost-breakdown",
+      "description": "Cost breakdown data extraction API"
+    },
+    {
+      "name": "Cost breakdown data extraction Rest APIs",
+      "description": "APIs for extracting  cost breakdown for materials"
+    }
+  ],
+  "paths": {
+    "/costgroupDocuments/{costgroupDocumentId}": {
+      "get": {
+        "tags": [
+          "Cost breakdown data extraction Rest APIs"
+        ],
+        "summary": "Returns line items with cost terms for given cost group document",
+        "description": "Retrieve the cost components and the associated cost group terms by specifying the document ID",
+        "operationId": "extractCostGroupDataForExternalAppsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "realm",
+            "in": "query",
+            "description": "Provide unique name of the realm. Example “s4All”",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "costgroupDocumentId",
+            "in": "path",
+            "description": "Provide costgroup document ID. Example “DOC123”",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful Response",
+            "schema": {
+              "$ref": "#/definitions/CostGroupDocument"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string",
+              "example": "Document with documentid Doc18401310ee doesnt exist"
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "type": "string",
+              "example": "Provided token expired. Not authorized to use the DMS application"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "string",
+              "example": "You cannot consume this service"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string",
+              "example": "Not found"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "string",
+              "example": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "/rfxCostgroups": {
+      "get": {
+        "tags": [
+          "Cost breakdown data extraction Rest APIs"
+        ],
+        "summary": "Returns a list of cost group document ids for materials which were accepted from sourcing event",
+        "description": "Search for cost-group documents associated with line items for which awards or PIRs are created by specifying a date range.",
+        "operationId": "extractCostGroupMetaDataForExternalAppsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "realm",
+            "in": "query",
+            "description": "Provide unique name of the realm. Example “s4All”",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "$filter=expression. ‘expression’ is a combination of resource parameters, values. Operator ‘eq’ is used to link parameter and value. Operator ‘and’ is used to link two or more parameters. For example, $filter=a eq ‘b’ and c ge 'd’. Following parameters are supported in current implementation.<br> date - get rfxCostgroups from given Date, ISO Format 2017-03-24T05:26:41 <br>Valid  combinations is  <br>1. date ge '2017-03-24T05:26:41'",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "$top",
+            "in": "query",
+            "description": "$top is the number of items to be returned. maximum page size supported 40. Example 40",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "$skip",
+            "in": "query",
+            "description": "$skip is the number of items to be skipped. Example 0",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "$count",
+            "in": "query",
+            "description": "To return the number of elements in a collection inline. The syntax is $count=true. Example true",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful Response",
+            "schema": {
+              "$ref": "#/definitions/RfxCostGroupsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string",
+              "example": "$top accepts integers only"
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "type": "string",
+              "example": "Provided token expired. Not authorized to use the DMS application"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "string",
+              "example": "You cannot consume this service"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "string",
+              "example": "Not found"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "string",
+              "example": "Internal Server Error"
+            }
+          },
+          "501": {
+            "description": "Not Implemented",
+            "schema": {
+              "type": "string",
+              "example": "eq operation is not supported"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CostGroupDetail": {
+      "type": "object",
+      "properties": {
+        "costGroupDocumentId": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "CostGroupDetail"
+    },
+    "CostGroupDocument": {
+      "type": "object",
+      "properties": {
+        "costGroupLineList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CostGroupLine"
+          }
+        },
+        "costGroupName": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "totalCost": {
+          "type": "string"
+        }
+      },
+      "title": "CostGroupDocument"
+    },
+    "CostGroupLine": {
+      "type": "object",
+      "properties": {
+        "lineName": {
+          "type": "string"
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "title": "CostGroupLine"
+    },
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "costGroupDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CostGroupDetail"
+          }
+        },
+        "itemId": {
+          "type": "string"
+        },
+        "lineItemName": {
+          "type": "string"
+        },
+        "plantId": {
+          "type": "string"
+        },
+        "supplierId": {
+          "type": "string"
+        }
+      },
+      "title": "LineItem"
+    },
+    "RFXCostGroups": {
+      "type": "object",
+      "properties": {
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItem"
+          }
+        },
+        "sourceId": {
+          "type": "string"
+        }
+      },
+      "title": "RFXCostGroups"
+    },
+    "RfxCostGroupsResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rfxCostgroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RFXCostGroups"
+          }
+        }
+      },
+      "title": "RfxCostGroupsResponse"
+    }
+  }
+}

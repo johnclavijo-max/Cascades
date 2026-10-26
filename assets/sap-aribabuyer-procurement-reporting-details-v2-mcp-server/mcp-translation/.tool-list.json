@@ -1,0 +1,124 @@
+[
+  {
+    "name": "GetDetails",
+    "title": "GetDetails",
+    "description": "Synchronous API to get procurement transaction data, appropriate for smaller results sets",
+    "openApiType": {
+      "operationId": "GetDetails",
+      "parameters": [
+        {
+          "name": "viewTemplateName",
+          "description": "view template name",
+          "in": "path",
+          "newParameterName": "viewtemplatename"
+        },
+        {
+          "name": "realm",
+          "description": "Customer realm name",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "filters",
+          "description": "Filter criteria to query",
+          "in": "query",
+          "newParameterName": "filters"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GetCount",
+    "title": "GetCount",
+    "description": "synchronous API to get records count of procurement transaction data",
+    "openApiType": {
+      "operationId": "GetCount",
+      "parameters": [
+        {
+          "name": "viewTemplateName",
+          "description": "view template name",
+          "in": "path",
+          "newParameterName": "viewtemplatename"
+        },
+        {
+          "name": "realm",
+          "description": "Customer realm name",
+          "in": "query",
+          "newParameterName": "realm"
+        },
+        {
+          "name": "filters",
+          "description": "Filter criteria to query",
+          "in": "query",
+          "newParameterName": "filters"
+        }
+      ],
+      "requestBody": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        }
+      ]
+    }
+  }
+]

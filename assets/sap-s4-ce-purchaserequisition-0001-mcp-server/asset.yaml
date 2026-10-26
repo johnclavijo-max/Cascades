@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-ce-purchaserequisition-0001-mcp-server
+  description: Exposes SAP S/4HANA Cloud Purchase Requisition create and read operations as MCP tools for re-sourcing action initiation.
+  version: 1.0.0
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: CE_PURCHASEREQUISITION_0001
+    kind: api
+    ordId: sap.s4:apiResource:CE_PURCHASEREQUISITION_0001:v1
+
+provides:
+  apis:
+    - name: sap-s4-ce-purchaserequisition-0001-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:trade-disruption-intelligence-b969b.sap-s4-ce-purchaserequisition-0001-mcp-server:v1
